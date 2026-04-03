@@ -1,0 +1,112 @@
+/* Footer */
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 50px 5% 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Container Grid */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+/* About */
+.footer-about h3 {
+  font-size: 24px;
+  color: #ff4d00;
+  margin-bottom: 15px;
+}
+
+.footer-about p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Links */
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #ff4d00;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  text-decoration: none;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #ff4d00;
+}
+
+/* Contact */
+.footer-contact p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-contact i {
+  margin-right: 8px;
+  color: #ff4d00;
+}
+
+/* Social Media */
+.footer-social .social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-social .social-icons a {
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.footer-social .social-icons a:hover {
+  color: #ff4d00;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-social .social-icons {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,77 @@
+/* Section */
+.fastfood-services {
+  padding: 60px 5%;
+  background: #fff7f0;
+}
+
+/* Title */
+.ffs-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #111;
+}
+.ffs-title i {
+  color: #ff4d00;
+  margin-right: 10px;
+}
+
+/* Container Grid */
+.ffs-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* Card */
+.ffs-card {
+  background: #fff;
+  border-radius: 15px;
+  text-align: center;
+  padding: 30px 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.ffs-card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+/* Icon */
+.ffs-icon {
+  font-size: 40px;
+  color: #ff4d00;
+  margin-bottom: 15px;
+}
+
+/* Title */
+.ffs-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #111;
+}
+
+/* Description */
+.ffs-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .ffs-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .ffs-container {
+    grid-template-columns: 1fr;
+  }
+  .ffs-title {
+    font-size: 24px;
+  }
+}

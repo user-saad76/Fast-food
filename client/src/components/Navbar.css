@@ -1,0 +1,169 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background: #111;
+  color: #fff;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Container */
+.navbar-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff4d00;
+}
+
+/* Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ff4d00;
+}
+
+/* Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.sign-in {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.sign-in:hover {
+  background: #fff;
+  color: #111;
+}
+
+.sign-up {
+  background: #ff4d00;
+  color: #fff;
+}
+
+.sign-up:hover {
+  background: #e04300;
+}
+
+/* Hamburger */
+.menu-icon {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    background: #111;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+    transition: 0.3s;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .mobile {
+    display: none;
+  }
+}
+
+/* Cart */
+.cart {
+  position: relative;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.cart:hover {
+  color: #ff4d00;
+}
+
+/* Cart Count Badge */
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #ff4d00;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Mobile Cart */
+@media (max-width: 768px) {
+  .cart {
+    position: absolute;
+    right: 60px;
+    top: 20px;
+  }
+}
