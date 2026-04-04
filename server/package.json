@@ -11,7 +11,10 @@
   "author": "Saad",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.4.0",
     "express": "^5.2.1",
+    "mongoose": "^9.4.1",
     "nodemon": "^3.1.14"
   }
 }
