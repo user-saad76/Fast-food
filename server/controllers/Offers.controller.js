@@ -16,15 +16,20 @@ export const getAllOffers = async(req,res)=>{
       const Offers =  await Offer.find({}); 
     res.json({messages:'Offers endpoint called',Offers});
 }
- export const getOfferById = (req,res)=>{
-    const data = req.params;
-    console.log('give data through params ',data);
-    
-    res.json({messages:'Single Offer endpoint called',data:data});
+ export const getOfferById = async(req,res)=>{
+    const {id} = req.params;
+     const data = await Offer.findById(id)
+    res.json({messages:'Single Offer endpoint called', data});
 }
-export const updateOffer = (req,res)=>{
-    res.json({messages:'Single Offer endpoint called'});
+export const updateOffer = async(req,res)=>{
+     const {id} = req.params;
+     const offer = req.body;
+      const data = await Offer.findByIdAndUpdate(id,offer)
+    res.json({messages:'Update Offer endpoint called',data});
 }
-export const deleteOffer = (req,res)=>{
-    res.json({messages:'Offer delete endpoint called'});
+export const deleteOffer = async(req,res)=>{
+
+    const {id} = req.params;
+    const data = await Offer.findByIdAndDelete(id)
+    res.json({messages:'Offer delete endpoint called',data});
 }
