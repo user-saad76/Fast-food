@@ -1,41 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Offers.css";
 
 function Offers() {
-  const offers = [
-    {
-      img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-      title: "Burger Deal",
-      desc: "Buy 1 Get 1 Free on all burgers 🍔",
-      price: "Rs. 799",
-      oldPrice: "Rs. 999",
-      discount: "20% OFF",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
-      title: "Pizza Combo",
-      desc: "Large pizza + drink at discount 🍕",
-      price: "Rs. 1199",
-      oldPrice: "Rs. 1499",
-      discount: "20% OFF",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1550547660-d9450f859349",
-      title: "Fries Special",
-      desc: "Extra crispy fries with sauces 🍟",
-      price: "Rs. 399",
-      oldPrice: "Rs. 599",
-      discount: "30% OFF",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1544025162-d76694265947",
-      title: "Chicken Bucket",
-      desc: "Family bucket with 8 pieces 🍗",
-      price: "Rs. 1999",
-      oldPrice: "Rs. 2499",
-      discount: "20% OFF",
-    },
-  ];
+       
+    const [offers, setOffers] = useState([]);
+      /* ================= FETCH FROM BACKEND ================= */
+     useEffect(() => {
+       fetch("http://localhost:7000/offers") // your API
+      .then(res => res.json())
+      .then(data => setOffers(data))
+      .catch(err => console.log(err));
+    }, []);
+
 
   return (
     <section className="offers">
