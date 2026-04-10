@@ -8,7 +8,7 @@ function Offers() {
      useEffect(() => {
        fetch("http://localhost:7000/offers") // your API
       .then(res => res.json())
-      .then(data => setOffers(data))
+      .then(data => setOffers(data.Offers))
       .catch(err => console.log(err));
     }, []);
 
