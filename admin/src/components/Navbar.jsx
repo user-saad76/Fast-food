@@ -44,10 +44,20 @@ function Navbar() {
                 <li>Delete Offers</li>
                  </Link>
                   <Link to="/offers-page-delete">
-                <li>Upadate Offers</li>
+                <li>Update Offers</li>
                  </Link>
-                <li>Manage Products</li>
-                <li>Categories</li>
+                 <Link to="/banner-page">
+                <li> Create FirstBanner</li>
+                 </Link>
+                  <Link to="/banner-page-update">
+                <li>Upadate FirstBanner</li>
+                 </Link>
+                   <Link to="/banner-page-delete">
+                <li>Delete FirstBanner</li>
+                 </Link>
+                    <Link to="/service-page">
+                <li>Create Service</li>
+                 </Link>
               </ul>
             )}
           </li>

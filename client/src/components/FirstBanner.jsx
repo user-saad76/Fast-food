@@ -2,34 +2,30 @@ import React, { useEffect, useState } from "react";
 import "./FirstBanner.css";
 
 function FirstBanner() {
-  const slides = [
-    {
-      img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-      title: "Delicious Burgers",
-      desc: "Juicy, hot & made fresh every day 🍔",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
-      title: "Cheesy Pizza",
-      desc: "Loaded with cheese & fresh toppings 🍕",
-    },
-    {
-      img: "https://images.unsplash.com/photo-1550547660-d9450f859349",
-      title: "Crispy Fries",
-      desc: "Golden, crunchy & irresistible 🍟",
-    },
-  ];
 
+  const [slides, setSlides] = useState([]); // ✅ added
   const [current, setCurrent] = useState(0);
+
+  // ✅ Fetch data from backend
+  useEffect(() => {
+    fetch("http://localhost:7000/banners")
+      .then((res) => res.json())
+      .then((data) => {
+        setSlides(data.Banners); // your API should return array
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   // Auto slide
   useEffect(() => {
+    if (slides.length === 0) return; // ✅ prevent error
+
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [slides]); // ✅ depend on slides
 
   return (
     <div className="banner">

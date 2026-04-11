@@ -1,29 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./FastfoodServices.css";
 
 function FastfoodServices() {
-  const services = [
-    {
-      icon: "fa-truck-fast",
-      title: "Fast Delivery",
-      desc: "Get your favorite food delivered in under 30 minutes 🚀",
-    },
-    {
-      icon: "fa-hamburger",
-      title: "Quality Food",
-      desc: "Fresh and tasty meals made with high-quality ingredients 🍔",
-    },
-    {
-      icon: "fa-headset",
-      title: "24/7 Support",
-      desc: "Our support team is available anytime to help you ☎️",
-    },
-    {
-      icon: "fa-calendar-check",
-      title: "Catering Services",
-      desc: "Perfect for events, parties, and corporate gatherings 🎉",
-    },
-  ];
+
+  const [services, setServices] = useState([]); // ✅ added
+
+  // ✅ Fetch from backend
+  useEffect(() => {
+    fetch("http://localhost:7000/services")
+      .then((res) => res.json())
+      .then((data) => {
+        setServices(data.Services); // adjust if needed (see note below)
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <section className="fastfood-services">
