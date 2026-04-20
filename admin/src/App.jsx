@@ -8,6 +8,7 @@ import CreateService from './pages/CreateService';
 import DeleteOffers from './pages/DeleteOffers';
 import Home from './pages/Home'
 import { BrowserRouter, Routes, Route } from "react-router";
+import UpdateOffers from './pages/UpdateOffers';
 
 function App() {
  
@@ -21,7 +22,8 @@ function App() {
          <Route path='/offers-page' element = {<CreateOffers/>} /> 
           <Route path='/banner-page' element = {<CreateFirstBanner/>} /> 
            <Route path='/service-page' element = {<CreateService/>} /> 
-           <Route path='/offers-page-delete' element = {<DeleteOffers/>} />  
+           <Route path='/offers-page-delete' element = {<DeleteOffers/>} /> 
+           <Route path='/offers-page-update' element = {<UpdateOffers/>} />  
     </Routes>
     </BrowserRouter>
     </>

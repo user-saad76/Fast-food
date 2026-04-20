@@ -1,15 +1,34 @@
 
 import {Offer} from "../models/Offers.models.js";
-export const CreateOffers = async(req,res)=>{
+export const CreateOffers = async (req, res) => {
+  try {
+
     const data = req.body;
-    console.log(" Create backend data",data); 
-      await Offer.create(data) 
-    res.json(
-        { 
-            messages:' Create Offer endpoint called',
-            data:data
-        });
-}
+    const file = req.file; // ✅ correct
+
+    console.log("Backend data:", data);
+    console.log("Uploaded file:", file);
+
+    // const newOffer = await Offer.create({
+    //   title: data.title,
+    //   slug: data.slug,
+    //   desc: data.desc,
+    //   price: data.price,
+    //   oldPrice: data.oldPrice,
+    //   discount: data.discount,
+    //   img: file ? file.path : ""   // ✅ image path
+    // });
+
+    res.json({
+      message: "Offer created successfully",
+     // data: newOffer
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 export const getAllOffers = async(req,res)=>{
     //const data = req.query;
    // console.log('data from backend',data);
@@ -22,14 +41,25 @@ export const getAllOffers = async(req,res)=>{
     res.json({messages:'Single Offer endpoint called', data});
 }
 export const updateOffer = async(req,res)=>{
-     const {id} = req.params;
+     const {slug} = req.params;
      const offer = req.body;
-      const data = await Offer.findByIdAndUpdate(id,offer)
+      const data = await Offer.findByIdAndUpdate({slug},offer)
     res.json({messages:'Update Offer endpoint called',data});
 }
 export const deleteOffer = async(req,res)=>{
+      try {
+    const { slug } = req.params;
 
-    const {id} = req.params;
-    const data = await Offer.findByIdAndDelete(id)
-    res.json({messages:'Offer delete endpoint called',data});
+    const deletedOffer = await Offer.findOneAndDelete({ slug });
+
+    if (!deletedOffer) {
+      return res.status(404).json({ message: "Offer not found" });
+    }
+
+    res.json({ message: "Offer deleted successfully" });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
+  }
 }

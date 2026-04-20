@@ -10,6 +10,7 @@ import { ConnectDB } from './config/db.js';
 
 
 
+
 const port = process.env.PORT || 5000;
 server.use(cors({
   origin:  ["http://localhost:5174", "http://localhost:5173"],
@@ -19,6 +20,8 @@ server.use(cors({
 
 
 ConnectDB().catch((e)=>console.log("Error in Connection",e));
+
+
 server.use(bodyParser.json())
 server.use(OfferRoutes)
 server.use(BannerRoutes)

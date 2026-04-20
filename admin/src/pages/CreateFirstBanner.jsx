@@ -6,7 +6,7 @@ import "./CreateFirstBanner.css";
 
 // ✅ Zod Schema
 const bannerSchema = z.object({
-  img: z.string().url("Enter valid image URL"),
+  img: z.any(),
   title: z.string().min(3, "Title must be at least 3 characters"),
   desc: z.string().min(5, "Description must be at least 5 characters"),
 });
@@ -17,6 +17,7 @@ function CreateFirstBanner() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors }
   } = useForm({
     resolver: zodResolver(bannerSchema)
@@ -25,12 +26,15 @@ function CreateFirstBanner() {
   // ✅ Submit Function
   const onSubmit = async (data) => {
     try {
+
+      const formData = new FormData();
+      formData.append("img", data.img);
+      formData.append("title", data.title);
+      formData.append("desc", data.desc);
+
       const res = await fetch("http://localhost:7000/create/banner", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
+        body: formData
       });
 
       const result = await res.json();
@@ -51,13 +55,13 @@ function CreateFirstBanner() {
 
         <h2>Create Banner</h2>
 
-        {/* Image URL */}
+        {/* Image FILE */}
         <div className="form-group">
-          <label>Image URL</label>
+          <label>Image</label>
           <input
-            type="text"
-            placeholder="Enter image URL"
-            {...register("img")}
+            type="file"
+            accept="image/*"
+            onChange={(e) => setValue("img", e.target.files[0])}
           />
           {errors.img && <p className="error">{errors.img.message}</p>}
         </div>

@@ -43,7 +43,7 @@ function Navbar() {
                  <Link to="/offers-page-delete">
                 <li>Delete Offers</li>
                  </Link>
-                  <Link to="/offers-page-delete">
+                  <Link to="/offers-page-update">
                 <li>Update Offers</li>
                  </Link>
                  <Link to="/banner-page">

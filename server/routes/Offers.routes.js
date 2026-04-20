@@ -1,13 +1,14 @@
 import express from 'express'
 import { CreateOffers, deleteOffer, getAllOffers, getOfferById, updateOffer } from '../controllers/Offers.controller.js';
+import upload from '../utlis/multer.js';
 const server = express();
 const router = express.Router()
 
-router.route('/create/offer').post(CreateOffers)
+router.route('/create/offer').post(upload.single("img"),CreateOffers)
 router.route('/offers').get(getAllOffers)
 router.route('/offer/:id').get(getOfferById)
-router.route('/update/offer/:id').put(updateOffer)
-router.route('/delete/offer/:id').delete(deleteOffer)
+router.route('/update/offer/:slug').put(updateOffer)
+router.route('/delete/offer/:slug').delete(deleteOffer)
 
 
 

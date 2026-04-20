@@ -1,0 +1,25 @@
+_id
+69d8fa54277b0fdcf7570aa5
+title
+"FRENCH CHIPS"
+slug
+"french-chips"
+img
+"https://images.unsplash.com/photo-1550547660-d9450f859349"
+desc
+"Extra crispy fries with sauces 🍟"
+price
+"600"
+oldPrice
+"500"
+discount
+"400"
+{
+  "title": "French Fries",
+  "slug": "french-fries",
+  "img": "https://images.unsplash.com/photo-1550547660-d9450f859349",
+  "desc": "Crispy golden French fries served hot with delicious sauces 🍟",
+  "price": "600",
+  "oldPrice": "750",
+  "discount": "20% OFF"
+}

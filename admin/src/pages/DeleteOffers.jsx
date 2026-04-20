@@ -5,10 +5,7 @@ import "./DeleteOffers.css";
 
 /* ================= ZOD SCHEMA ================= */
 const deleteSchema = z.object({
-  id: z.string().min(1, "Offer ID is required"),
-  confirm: z.string().refine((val) => val === "DELETE", {
-    message: "You must type DELETE to confirm",
-  }),
+  slug: z.string().min(1, "Slug is required"),
 });
 
 function DeleteOffers() {
@@ -25,8 +22,11 @@ function DeleteOffers() {
   /* ================= DELETE API ================= */
   const onSubmit = async (data) => {
     try {
-      await fetch(`http://localhost:5000/api/offers/${data.id}`, {
+      await fetch(`http://localhost:7000/delete/offer/${data.slug}`, {
         method: "DELETE",
+         headers: {
+          "Content-Type": "application/json"
+        }
       });
 
       alert("Offer deleted successfully!");
@@ -44,19 +44,12 @@ function DeleteOffers() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="delete-form">
 
-        {/* ID INPUT */}
+        {/* SLUG INPUT */}
         <input
-          placeholder="Enter Offer ID"
-          {...register("id")}
+          placeholder="Enter Offer Slug"
+          {...register("slug")}
         />
-        <p className="error">{errors.id?.message}</p>
-
-        {/* CONFIRM INPUT */}
-        <input
-          placeholder="Type DELETE to confirm"
-          {...register("confirm")}
-        />
-        <p className="error">{errors.confirm?.message}</p>
+        <p className="error">{errors.slug?.message}</p>
 
         <button type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Deleting..." : "Delete Offer"}

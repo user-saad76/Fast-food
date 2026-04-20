@@ -7,7 +7,7 @@ import "./CreateOffers.css";
 const offerSchema = z.object({
   title: z.string().min(3, "Title must be at least 3 characters"),
   slug: z.string().min(3, "Slug must be at least 3 characters"),
-  img: z.string().url("Enter valid image URL"),
+  img: z.any(),
   desc: z.string().min(5, "Description must be at least 5 characters"),
   price: z.string().min(1, "Price is required"),
   oldPrice: z.string().min(1, "Old price is required"),
@@ -20,6 +20,7 @@ function CreateOffers() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isSubmitting }
   } = useForm({
     resolver: zodResolver(offerSchema)
@@ -28,12 +29,19 @@ function CreateOffers() {
   /* CREATE OFFER */
   const onSubmit = async (data) => {
     try {
+
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("slug", data.slug);
+      formData.append("img", data.img); // FILE
+      formData.append("desc", data.desc);
+      formData.append("price", data.price);
+      formData.append("oldPrice", data.oldPrice);
+      formData.append("discount", data.discount);
+
       const res = await fetch("http://localhost:7000/create/offer", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       const result = await res.json();
@@ -51,7 +59,7 @@ function CreateOffers() {
 
       <h2>Create Offer</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="create-offer-form">
+      <form onSubmit={handleSubmit(onSubmit)} className="create-offer-form" encType="multipart/form-data">
 
         <input placeholder="Title" {...register("title")} />
         <p className="error">{errors.title?.message}</p>
@@ -59,7 +67,12 @@ function CreateOffers() {
         <input placeholder="Slug (burger-deal)" {...register("slug")} />
         <p className="error">{errors.slug?.message}</p>
 
-        <input placeholder="Image URL" {...register("img")} />
+        {/* ✅ IMAGE FILE INPUT */}
+       <input
+        type="file"
+          accept="image/*"
+              onChange={(e) => setValue("img", e.target.files[0])}
+         />
         <p className="error">{errors.img?.message}</p>
 
         <input placeholder="Description" {...register("desc")} />
