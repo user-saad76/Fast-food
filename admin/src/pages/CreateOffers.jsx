@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./CreateOffers.css";
 
 /* ZOD SCHEMA */
@@ -25,6 +27,7 @@ function CreateOffers() {
   } = useForm({
     resolver: zodResolver(offerSchema)
   });
+  
 
   /* CREATE OFFER */
   const onSubmit = async (data) => {
@@ -45,10 +48,13 @@ function CreateOffers() {
       });
 
       const result = await res.json();
-      console.log("Offer Created:", result);
-
-      reset();
-
+     
+      if (res.ok) {
+        toast.success("Offer Created Successfully ✅");
+        reset();
+      } else {
+        toast.error(result.message || "Failed to create offer ❌");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -92,6 +98,8 @@ function CreateOffers() {
         </button>
 
       </form>
+      {/* TOAST CONTAINER */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 }

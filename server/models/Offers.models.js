@@ -18,7 +18,7 @@ const OfferSchema = new mongoose.Schema(
 
     img: {
       type: {
-        public_id:String,
+         public_id:String,
         secure_url:String
       },
       required: true,

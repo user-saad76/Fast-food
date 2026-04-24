@@ -1,25 +1,111 @@
-_id
-69d8fa54277b0fdcf7570aa5
-title
-"FRENCH CHIPS"
-slug
-"french-chips"
-img
-"https://images.unsplash.com/photo-1550547660-d9450f859349"
-desc
-"Extra crispy fries with sauces 🍟"
-price
-"600"
-oldPrice
-"500"
-discount
-"400"
-{
-  "title": "French Fries",
-  "slug": "french-fries",
-  "img": "https://images.unsplash.com/photo-1550547660-d9450f859349",
-  "desc": "Crispy golden French fries served hot with delicious sauces 🍟",
-  "price": "600",
-  "oldPrice": "750",
-  "discount": "20% OFF"
-}
+// _id
+// 69d8fa54277b0fdcf7570aa5
+// title
+// "FRENCH CHIPS"
+// slug
+// "french-chips"
+// img
+// "https://images.unsplash.com/photo-1550547660-d9450f859349"
+// desc
+// "Extra crispy fries with sauces 🍟"
+// price
+// "600"
+// oldPrice
+// "500"
+// discount
+// "400"
+// {
+//   "title": "French Fries",
+//   "slug": "french-fries",
+//   "img": "https://images.unsplash.com/photo-1550547660-d9450f859349",
+//   "desc": "Crispy golden French fries served hot with delicious sauces 🍟",
+//   "price": "600",
+//   "oldPrice": "750",
+//   "discount": "20% OFF"
+// }
+
+// _id
+// 69d8fbb6277b0fdcf7570aa6
+// title
+// "BURGER DEAL"
+// slug
+// "burger-deal"
+// img
+// "https://images.unsplash.com/photo-1550547660-d9450f859349"
+// desc
+// "Buy 1 Get 1 Free on all burgers 🍔"
+// price
+// "799"
+// oldPrice
+// "800"
+// discount
+// "650"
+// createdAt
+// 2026-04-10T13:31:34.969+00:00
+// updatedAt
+// 2026-04-10T13:31:34.969+00:00
+// __v
+// 0
+// _id
+// 69d8fcac277b0fdcf7570aa7
+// title
+// "PIZZA COMBO"
+// slug
+// "pizza-combo"
+// img
+// "https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
+// desc
+// "Large pizza + drink at discount 🍕"
+// price
+// "800"
+// oldPrice
+// "900"
+// discount
+// "700"
+// createdAt
+// 2026-04-10T13:35:40.523+00:00
+// updatedAt
+// 2026-04-10T13:35:40.523+00:00
+// __v
+// 0   
+// _id
+// 69d8fd73277b0fdcf7570aa8
+// title
+// "CHICKEN BUCKET"
+// slug
+// "chicken-bucket"
+// img
+// "https://images.unsplash.com/photo-1544025162-d76694265947"
+// desc
+// "Family bucket with 8 pieces 🍗"
+// price
+// "1999"
+// oldPrice
+// " 2499"
+// discount
+// "1800"
+// createdAt
+// 2026-04-10T13:38:59.554+00:00
+// updatedAt
+// 2026-04-10T13:38:59.554+00:00
+// __v
+// 0
+/** 
+* Paste one or more documents here
+*/
+// {
+//   "title": "FRENCH FRIES",
+//   "slug": "french-fries",
+//   "img": "https://images.unsplash.com/photo-1550547660-d9450f859349",
+//   "desc": "Crispy golden French fries served hot with delicious sauces 🍟",
+//   "price": "600",
+//   "oldPrice": "750",
+//   "discount": "500",
+//   "createdAt": {
+//     "$date": "2026-04-20T11:29:55.537Z"
+//   },
+//   "updatedAt": {
+//     "$date": "2026-04-20T11:29:55.537Z"
+//   },
+//   "__v": 0
+// }

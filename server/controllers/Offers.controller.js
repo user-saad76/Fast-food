@@ -4,24 +4,29 @@ export const CreateOffers = async (req, res) => {
   try {
 
     const data = req.body;
-    const file = req.file; // ✅ correct
+    const  image = req.file; // ✅ correct
+
+    const img = {
+       secure_url:image.path
+    }
+    console.log("Matching-img",img)
 
     console.log("Backend data:", data);
-    console.log("Uploaded file:", file);
+    console.log("Uploaded file:", image.path);
 
-    // const newOffer = await Offer.create({
-    //   title: data.title,
-    //   slug: data.slug,
-    //   desc: data.desc,
-    //   price: data.price,
-    //   oldPrice: data.oldPrice,
-    //   discount: data.discount,
-    //   img: file ? file.path : ""   // ✅ image path
-    // });
+    const newOffer = await Offer.create({
+       title: data.title,
+       slug: data.slug,
+       desc: data.desc,
+      price: data.price,
+      oldPrice: data.oldPrice,
+       discount: data.discount,
+       img:img? img : ""   // ✅ image path
+     });
 
     res.json({
       message: "Offer created successfully",
-     // data: newOffer
+      data: newOffer
     });
 
   } catch (error) {

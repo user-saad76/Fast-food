@@ -30,7 +30,7 @@ function Offers() {
               <i className="fa-solid fa-percent"></i> {item.discount}
             </span>
 
-            <img src={item.img} alt="offer" />
+            <img src={item.img?.secure_url} alt="offer" />
 
             <div className="offer-content">
               <h3>{item.title}</h3>
