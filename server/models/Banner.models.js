@@ -3,9 +3,11 @@ import mongoose from "mongoose";
 const bannerSchema = new mongoose.Schema(
   {
     img: {
-      type: String,
-      required: [true, "Image URL is required"],
-      trim: true
+      type: {
+         public_id:String,
+        secure_url:String
+      },
+      required: true,
     },
     title: {
       type: String,

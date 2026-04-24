@@ -1,13 +1,25 @@
 import Banner from "../models/Banner.models.js";
 
 export const CreateBanner = async(req,res)=>{
-    const data = req.body;
+   const data = req.body;
+    const  image = req.file; // ✅ correct
+
+    const img = {
+       secure_url:image.path
+    }
+    console.log("Matching-img",img)
+
+    console.log("Backend data:", data);
     console.log(" Create backend data",data); 
-      await Banner.create(data) 
+      const newBanner = await Banner.create({
+            title: data.title,
+            desc: data.desc,
+            img:img? img : ""   // ✅ image path
+          });
     res.json(
         { 
             messages:' Create Banner endpoint called',
-            data:data
+            data:newBanner
         });
 }
 export const getAllBanner = async(req,res)=>{

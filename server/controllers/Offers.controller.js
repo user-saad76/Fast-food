@@ -12,7 +12,6 @@ export const CreateOffers = async (req, res) => {
     console.log("Matching-img",img)
 
     console.log("Backend data:", data);
-    console.log("Uploaded file:", image.path);
 
     const newOffer = await Offer.create({
        title: data.title,

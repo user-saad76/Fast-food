@@ -34,7 +34,7 @@ function FirstBanner() {
           key={index}
           className={index === current ? "slide active" : "slide"}
         >
-          <img src={slide.img} alt="food" />
+          <img src={slide.img?.secure_url} alt="food" />
 
           <div className="overlay">
             <h1>{slide.title}</h1>
