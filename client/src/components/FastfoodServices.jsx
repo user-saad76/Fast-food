@@ -1,27 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./FastfoodServices.css";
+import { useFetch } from "../hooks/useFetch";
 
 function FastfoodServices() {
 
-  const [services, setServices] = useState([]); // ✅ added
-
-  // ✅ Fetch from backend
-  useEffect(() => {
-    fetch("http://localhost:7000/services")
-      .then((res) => res.json())
-      .then((data) => {
-        setServices(data.Services); // adjust if needed (see note below)
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
+    const {data:services,error,loading} = useFetch("http://localhost:7000/services");
+    
   return (
     <section className="fastfood-services">
       <h2 className="ffs-title">
         <i className="fa-solid fa-utensils"></i> Our Services
       </h2>
       <div className="ffs-container">
-        {services.map((service, index) => (
+        {services?.Services?.map((service, index) => (
           <div className="ffs-card" key={index}>
             <div className="ffs-icon">
               <i className={`fa-solid ${service.icon}`}></i>

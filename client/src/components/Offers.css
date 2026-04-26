@@ -1,45 +1,72 @@
-/* Section */
+/* ================= SECTION ================= */
 .offers {
   padding: 60px 5%;
   background: #f8f8f8;
+  min-height: 100vh;
 }
 
-/* Title */
+/* ================= TITLE ================= */
 .offers-title {
   text-align: center;
   font-size: 32px;
   margin-bottom: 40px;
   color: #111;
+  font-weight: 700;
 }
 
-/* Container */
+.offers-title i {
+  margin-right: 8px;
+  color: #ff4d00;
+}
+
+/* ================= GRID CONTAINER ================= */
 .offers-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
 }
 
-/* Card */
+/* ================= CARD ================= */
 .offer-card {
+  position: relative;
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .offer-card:hover {
   transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Image */
+/* ================= IMAGE ================= */
 .offer-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-/* Content */
+/* ================= BADGE ================= */
+.discount-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ff4d00;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  z-index: 2;
+  font-weight: 600;
+}
+
+.discount-badge i {
+  margin-right: 5px;
+}
+
+/* ================= CONTENT ================= */
 .offer-content {
   padding: 15px;
 }
@@ -49,25 +76,65 @@
   margin-bottom: 8px;
 }
 
+/* LINK */
+.offer-link {
+  text-decoration: none;
+  color: #111;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.offer-link:hover {
+  color: #ff4d00;
+}
+
+/* DESCRIPTION */
 .offer-content p {
   font-size: 14px;
   color: #555;
   margin-bottom: 15px;
+  line-height: 1.5;
 }
 
-/* Bottom */
+.offer-content p i {
+  margin-right: 6px;
+  color: #ff4d00;
+}
+
+/* ================= BOTTOM ================= */
 .offer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* ================= PRICE ================= */
+.price-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 13px;
+}
+
+.old-price i {
+  margin-right: 5px;
+}
+
 .price {
   font-weight: bold;
   color: #ff4d00;
+  font-size: 16px;
 }
 
-/* Button */
+.price i {
+  margin-right: 5px;
+}
+
+/* ================= BUTTON ================= */
 .order-btn {
   padding: 8px 15px;
   background: #ff4d00;
@@ -75,23 +142,40 @@
   color: #fff;
   border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.order-btn i {
+  margin-right: 6px;
 }
 
 .order-btn:hover {
   background: #e04300;
+  transform: scale(1.05);
 }
 
 /* ================= RESPONSIVE ================= */
 
-/* Tablet */
+/* LARGE TABLET */
+@media (max-width: 1200px) {
+  .offers-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* TABLET */
 @media (max-width: 992px) {
   .offers-container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .offers-title {
+    font-size: 28px;
+  }
 }
 
-/* Mobile */
+/* MOBILE */
 @media (max-width: 600px) {
   .offers-container {
     grid-template-columns: 1fr;
@@ -100,58 +184,32 @@
   .offers-title {
     font-size: 24px;
   }
+
+  .offer-content h3 {
+    font-size: 18px;
+  }
+
+  .offer-content p {
+    font-size: 13px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .order-btn {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
 }
 
-/* Make card relative for badge */
-.offer-card {
-  position: relative;
-}
+/* SMALL MOBILE */
+@media (max-width: 400px) {
+  .offers {
+    padding: 40px 10px;
+  }
 
-/* Discount Badge */
-.discount-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #ff4d00;
-  color: #fff;
-  font-size: 12px;
-  padding: 5px 10px;
-  border-radius: 20px;
-  z-index: 2;
-}
-
-/* Price Box */
-.price-box {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Old Price */
-.old-price {
-  text-decoration: line-through;
-  color: #888;
-  font-size: 13px;
-}
-
-/* Icons spacing */
-.offers-title i {
-  margin-right: 8px;
-  color: #ff4d00;
-}
-
-.offer-content p i {
-  margin-right: 6px;
-  color: #ff4d00;
-}
-
-.price-box i {
-  margin-right: 5px;
-}
-
-.order-btn i {
-  margin-right: 6px;
-}
-
-.discount-badge i {
-  margin-right: 5px;
+  .offer-card img {
+    height: 180px;
+  }
 }

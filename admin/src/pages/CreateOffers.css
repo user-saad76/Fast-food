@@ -1,3 +1,4 @@
+/* ================= GLOBAL ================= */
 * {
   margin: 0;
   padding: 0;
@@ -5,75 +6,160 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* ================= CONTAINER ================= */
 .create-offer-container {
   min-height: 100vh;
-  background: #f4f6f9;
+  background: linear-gradient(135deg, #fff5f0, #ffe6dc);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  padding: 40px 20px;
 }
 
-h2 {
-  color: #b30000;
-  margin-bottom: 20px;
+/* ================= TITLE ================= */
+.create-offer-container h2 {
+  color: #ff4d00;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-/* FORM */
+/* ================= FORM ================= */
 .create-offer-form {
   width: 100%;
   max-width: 600px;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
   display: grid;
-  gap: 12px;
-}
-
-.create-offer-form input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  gap: 14px;
   transition: 0.3s;
 }
 
-.create-offer-form input:focus {
-  border-color: #ff1a1a;
-  outline: none;
-  box-shadow: 0 0 6px rgba(255, 26, 26, 0.3);
+.create-offer-form:hover {
+  transform: translateY(-3px);
 }
 
-/* BUTTON */
+/* ================= INPUTS ================= */
+.create-offer-form input {
+  padding: 13px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  font-size: 14px;
+  background: #fafafa;
+}
+
+/* Placeholder */
+.create-offer-form input::placeholder {
+  color: #999;
+}
+
+/* Focus */
+.create-offer-form input:focus {
+  border-color: #ff4d00;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 77, 0, 0.2);
+}
+
+/* ================= FILE INPUT ================= */
+.create-offer-form input[type="file"] {
+  background: #fff;
+  padding: 10px;
+  border: 1px dashed #ff4d00;
+  cursor: pointer;
+}
+
+/* ================= INGREDIENTS ================= */
+.create-offer-form input[placeholder*="Ingredients"] {
+  border-left: 4px solid #28a745;
+  background: #f6fff8;
+}
+
+/* ================= RATING ================= */
+.create-offer-form input[placeholder*="Rating"] {
+  border-left: 4px solid gold;
+  background: #fffbea;
+}
+
+/* ================= ERROR ================= */
+.error {
+  color: #ff3b3b;
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 5px;
+}
+
+/* ================= BUTTON ================= */
 .create-offer-form button {
-  padding: 12px;
-  background: linear-gradient(135deg, #b30000, #ff1a1a);
-  color: white;
+  padding: 14px;
+  background: linear-gradient(135deg, #ff4d00, #ff7a33);
+  color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.3s;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
 }
 
 .create-offer-form button:hover {
-  transform: scale(1.03);
+  transform: scale(1.04);
+  box-shadow: 0 5px 15px rgba(255, 77, 0, 0.3);
 }
 
 .create-offer-form button:disabled {
-  background: gray;
+  background: #bbb;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
-/* ERROR */
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: -8px;
+/* ================= TOAST CUSTOM ================= */
+.Toastify__toast {
+  border-radius: 10px;
+  font-size: 14px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+@media (max-width: 768px) {
+  .create-offer-form {
+    padding: 22px;
+  }
+
+  .create-offer-container h2 {
+    font-size: 24px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 500px) {
+  .create-offer-form {
+    padding: 18px;
+  }
+
+  .create-offer-form input {
+    font-size: 13px;
+    padding: 11px;
+  }
+
+  .create-offer-form button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 350px) {
+  .create-offer-container {
+    padding: 25px 10px;
+  }
+
   .create-offer-form {
     padding: 15px;
   }

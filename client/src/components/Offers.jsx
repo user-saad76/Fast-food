@@ -1,41 +1,39 @@
 import React, { useEffect, useState } from "react";
 import "./Offers.css";
+import { Link } from "react-router"; // ✅ FIXED
+import { useFetch } from "../hooks/useFetch";
 
 function Offers() {
-       
-    const [offers, setOffers] = useState([]);
-      /* ================= FETCH FROM BACKEND ================= */
-     useEffect(() => {
-       fetch("http://localhost:7000/offers") // your API
-      .then(res => res.json())
-      .then(data => setOffers(data.Offers))
-      .catch(err => console.log(err));
-    }, []);
-
-
+        const {data:offers,error,loading} = useFetch("http://localhost:7000/offers");
   return (
     <section className="offers">
       
-      {/* Title with Icon */}
+      {/* Title */}
       <h2 className="offers-title">
         <i className="fa-solid fa-fire"></i> Special Offers
       </h2>
 
       <div className="offers-container">
-        {offers.map((item, index) => (
-          <div className="offer-card" key={index}>
+        {offers?.Offers?.map((item, index) => (
+          <div className="offer-card" key={item._id || index}>
             
             {/* Discount Badge */}
             <span className="discount-badge">
               <i className="fa-solid fa-percent"></i> {item.discount}
             </span>
 
-            <img src={item.img?.secure_url} alt="offer" />
+            <img src={item.img?.secure_url} alt={item.title} />
 
             <div className="offer-content">
-              <h3>{item.title}</h3>
+              
+              {/* ✅ FIXED LINK */}
+              <h3>
+                <Link to={`/offers/${item.slug}`} className="offer-link">
+                  {item.title}
+                </Link>
+              </h3>
 
-              {/* Description with Icon */}
+              {/* Description */}
               <p>
                 <i className="fa-solid fa-utensils"></i> {item.desc}
               </p>
@@ -45,10 +43,10 @@ function Offers() {
                 {/* Price Section */}
                 <div className="price-box">
                   <span className="old-price">
-                    <i className="fa-solid fa-tag"></i> {item.oldPrice}
+                    <i className="fa-solid fa-tag"></i> Rs {item.oldPrice}
                   </span>
                   <span className="price">
-                    <i className="fa-solid fa-money-bill-wave"></i> {item.price}
+                    <i className="fa-solid fa-money-bill-wave"></i> Rs {item.price}
                   </span>
                 </div>
 

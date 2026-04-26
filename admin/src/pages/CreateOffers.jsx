@@ -14,6 +14,8 @@ const offerSchema = z.object({
   price: z.string().min(1, "Price is required"),
   oldPrice: z.string().min(1, "Old price is required"),
   discount: z.string().min(1, "Discount is required"),
+  ingredients: z.string().min(1, "Ingredients required"),
+  rating: z.string().min(1, "Rating required"),
 });
 
 function CreateOffers() {
@@ -41,6 +43,8 @@ function CreateOffers() {
       formData.append("price", data.price);
       formData.append("oldPrice", data.oldPrice);
       formData.append("discount", data.discount);
+      formData.append("ingredients", data.ingredients);
+      formData.append("rating", data.rating);
 
       const res = await fetch("http://localhost:7000/create/offer", {
         method: "POST",
@@ -92,6 +96,12 @@ function CreateOffers() {
 
         <input placeholder="Discount" {...register("discount")} />
         <p className="error">{errors.discount?.message}</p>
+
+        <input placeholder="Ingredients (comma separated)" {...register("ingredients")} />
+        <p className="error">{errors.ingredients?.message}</p>
+
+        <input placeholder="Rating (0-5)" {...register("rating")} />
+        <p className="error">{errors.rating?.message}</p>
 
         <button type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Creating..." : "Create Offer"}

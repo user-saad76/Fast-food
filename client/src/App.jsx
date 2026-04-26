@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Offers from './components/Offers';
 import Contect from './pages/Contect';
 import DetailPage from './pages/DetailPage';
+import InfoPage from './pages/InfoPage';
 
 function App() {
   
@@ -24,6 +25,8 @@ function App() {
          <Route path='/offers' element = {<Offers/>} />
            <Route path='/contect' element = {<Contect/>} />
             <Route path='/food/:slug' element = {<DetailPage/>} />
+             <Route path='/offers/:slug' element = {<InfoPage/>} />
+
      
   
     </Routes>

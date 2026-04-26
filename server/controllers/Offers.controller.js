@@ -20,6 +20,8 @@ export const CreateOffers = async (req, res) => {
       price: data.price,
       oldPrice: data.oldPrice,
        discount: data.discount,
+       ingredients:data.ingredients,
+       rating:data.rating,
        img:img? img : ""   // ✅ image path
      });
 
@@ -44,6 +46,19 @@ export const getAllOffers = async(req,res)=>{
      const data = await Offer.findById(id)
     res.json({messages:'Single Offer endpoint called', data});
 }
+
+ export const getOfferBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    const data = await Offer.findOne({ slug });
+
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 export const updateOffer = async(req,res)=>{
      const {slug} = req.params;
      const offer = req.body;
