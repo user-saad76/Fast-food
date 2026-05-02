@@ -76,8 +76,12 @@ function Navbar() {
             Account ▾
             {accountDropdown && (
               <ul className="dropdown-menu">
-                <li>Logout</li>
-                <li>Sign Up</li>
+                 <li>
+               <Link to="/logout">Logout</Link>
+                </li>
+                 <li>
+               <Link to="/sign-up">Sign Up</Link>
+                </li>
               </ul>
             )}
           </li>

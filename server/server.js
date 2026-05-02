@@ -5,6 +5,8 @@ import cors from "cors"
 import OfferRoutes from './routes/Offers.routes.js'
 import BannerRoutes from './routes/Banner.routes.js'
 import ServiceRoutes from './routes/Service.routes.js'
+import UserRoutes from './routes/user.routes.js'
+import AdminRoutes from './routes/admin.routes.js'
 import bodyParser from 'body-parser';
 import { ConnectDB } from './config/db.js';
 
@@ -26,6 +28,9 @@ server.use(bodyParser.json())
 server.use(OfferRoutes)
 server.use(BannerRoutes)
 server.use(ServiceRoutes)
+server.use(UserRoutes)
+server.use(AdminRoutes)
+
 
 
 

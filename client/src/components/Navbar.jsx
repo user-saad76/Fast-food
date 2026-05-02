@@ -27,7 +27,7 @@ function Navbar() {
           {/* Auth Buttons */}
           <div className="auth-buttons mobile">
             <button className="btn sign-in">Sign In</button>
-            <button className="btn sign-up">Sign Up</button>
+           <Link to="/sign-up" className="btn sign-up">Sign Up</Link>
           </div>
         </ul>
 
@@ -39,8 +39,8 @@ function Navbar() {
 
         {/* Desktop Buttons */}
         <div className="auth-buttons desktop">
-          <button className="btn sign-in">Sign In</button>
-          <button className="btn sign-up">Sign Up</button>
+          <Link to="/sign-in" className="btn sign-in">Sign In</Link>
+           <Link to="/sign-up" className="btn sign-up">Sign Up</Link>
         </div>
 
       </div>

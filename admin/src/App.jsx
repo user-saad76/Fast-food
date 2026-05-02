@@ -9,6 +9,7 @@ import DeleteOffers from './pages/DeleteOffers';
 import Home from './pages/Home'
 import { BrowserRouter, Routes, Route } from "react-router";
 import UpdateOffers from './pages/UpdateOffers';
+import SignUp from './pages/SignUp';
 
 function App() {
  
@@ -24,6 +25,7 @@ function App() {
            <Route path='/service-page' element = {<CreateService/>} /> 
            <Route path='/offers-page-delete' element = {<DeleteOffers/>} /> 
            <Route path='/offers-page-update' element = {<UpdateOffers/>} />  
+           <Route path='/sign-up' element = {<SignUp/>} />  
     </Routes>
     </BrowserRouter>
     </>

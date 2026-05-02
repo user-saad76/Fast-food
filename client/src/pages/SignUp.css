@@ -1,0 +1,129 @@
+/* Scope everything under this to avoid global conflicts */
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ea4f33, #ea5a1d);
+  padding: 20px;
+}
+
+/* Form card */
+.signup-container .signup-form {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.6s ease;
+}
+
+/* Heading */
+.signup-container .signup-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Input group */
+.signup-container .input-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inputs */
+.signup-container .input-group input {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Focus effect */
+.signup-container .input-group input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Error messages */
+.signup-container .input-group p {
+  color: #ff4d4f;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+/* Button */
+.signup-container button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #eb6133, #eb6133);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.signup-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Click */
+.signup-container button:active {
+  transform: scale(0.98);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* 📱 Mobile */
+@media (max-width: 480px) {
+  .signup-container .signup-form {
+    padding: 22px;
+    border-radius: 15px;
+  }
+
+  .signup-container .signup-form h2 {
+    font-size: 20px;
+  }
+
+  .signup-container .input-group input {
+    padding: 11px;
+    font-size: 13px;
+  }
+}
+
+/* 📲 Tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+  .signup-container .signup-form {
+    max-width: 90%;
+  }
+}
+
+/* 💻 Large screens */
+@media (min-width: 1024px) {
+  .signup-container .signup-form {
+    max-width: 450px;
+  }
+}
