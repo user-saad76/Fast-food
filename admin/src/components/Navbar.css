@@ -9,7 +9,7 @@
 /* Navbar */
 .navbar {
   width: 100%;
-  background: linear-gradient(135deg, #b30000, #ff1a1a);
+  background: linear-gradient(135deg, #ed552b, #ed552b);
   color: white;
   padding: 15px 30px;
   position: sticky;
@@ -54,7 +54,7 @@
   position: absolute;
   top: 35px;
   right: 0;
-  background: #b30000;
+  background: #ed552b;
   border-radius: 8px;
   padding: 10px 0;
   min-width: 150px;

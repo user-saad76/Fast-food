@@ -1,0 +1,164 @@
+/* =========================
+   SIGNIN PAGE (SCOPED ONLY)
+========================= */
+
+.signin-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f06a31, #f06a31);
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Card Container */
+.signin-page .signin-card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  animation: signinFade 0.5s ease;
+  transition: all 0.3s ease;
+}
+
+.signin-page .signin-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Title */
+.signin-page .signin-card h2 {
+  font-size: 26px;
+  margin-bottom: 6px;
+  color: #222;
+  font-weight: 600;
+}
+
+/* Subtitle */
+.signin-page .subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 28px;
+}
+
+/* Form Field */
+.signin-page .field {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+/* Input */
+.signin-page .field input {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background: #f9f9f9;
+  transition: all 0.25s ease;
+}
+
+/* Input Focus */
+.signin-page .field input:focus {
+  border-color: #667eea;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Error Message */
+.signin-page .error {
+  color: #e63946;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Button */
+.signin-page .signin-btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f06a31, #f06a31);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Button Hover */
+.signin-page .signin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Button Active */
+.signin-page .signin-btn:active {
+  transform: scale(0.98);
+}
+
+/* Footer Text */
+.signin-page .footer-text {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* Link */
+.signin-page .footer-text span {
+  color: #667eea;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.signin-page .footer-text span:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes signinFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* Mobile */
+@media (max-width: 480px) {
+  .signin-page {
+    padding: 15px;
+  }
+
+  .signin-page .signin-card {
+    padding: 28px 20px;
+  }
+
+  .signin-page .signin-card h2 {
+    font-size: 22px;
+  }
+
+  .signin-page .subtitle {
+    font-size: 13px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .signin-page {
+    padding: 18px;
+  }
+}

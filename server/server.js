@@ -23,7 +23,7 @@ server.use(cors({
 
 ConnectDB().catch((e)=>console.log("Error in Connection",e));
 
-
+server.use(express.json());
 server.use(bodyParser.json())
 server.use(OfferRoutes)
 server.use(BannerRoutes)

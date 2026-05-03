@@ -1,0 +1,124 @@
+/* MAIN WRAPPER */
+.signin-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ed552b, #ed552b);
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* CARD */
+.signin-page .signin-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+/* TITLE */
+.signin-page h2 {
+  margin-bottom: 6px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* SUBTITLE */
+.signin-page .subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* FIELD */
+.signin-page .field {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+/* INPUT */
+.signin-page input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.signin-page input:focus {
+  border-color: #4f46e5;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.3);
+}
+
+/* ERROR */
+.signin-page .error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* BUTTON */
+.signin-page .signin-btn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ed552b, #ed552b);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+.signin-page .signin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.4);
+}
+
+/* FOOTER */
+.signin-page .footer-text {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #666;
+}
+
+.signin-page .footer-text span {
+  color: #4f46e5;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .signin-page .signin-card {
+    padding: 25px 20px;
+  }
+
+  .signin-page h2 {
+    font-size: 22px;
+  }
+}

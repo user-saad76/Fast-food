@@ -34,3 +34,30 @@ export const CreateAdmin = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+export const LoginAdmin = async(req,res)=>{
+
+    const {email,password} = req.body; 
+      const admin =  await Admin.find({email})
+      console.log('Get data from server',admin);
+      if(!admin || admin.length === 0 ){
+        return res.status(404).json({
+            success:false,
+            message:'Admin not Found'
+        })
+      }
+       const isMatched = await bcrypt.compare(password,admin[0].password)
+      
+       if(!isMatched){
+        return res.status(401).json({
+            success:false,
+            message:"invalid password"
+        })
+       }
+      
+    res.json(
+        { 
+            messages:' Admin have been logined',
+            admin
+        });
+}
+

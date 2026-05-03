@@ -10,6 +10,7 @@ import Home from './pages/Home'
 import { BrowserRouter, Routes, Route } from "react-router";
 import UpdateOffers from './pages/UpdateOffers';
 import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn';
 
 function App() {
  
@@ -26,6 +27,7 @@ function App() {
            <Route path='/offers-page-delete' element = {<DeleteOffers/>} /> 
            <Route path='/offers-page-update' element = {<UpdateOffers/>} />  
            <Route path='/sign-up' element = {<SignUp/>} />  
+            <Route path='/sign-in' element = {<SignIn/>} />  
     </Routes>
     </BrowserRouter>
     </>

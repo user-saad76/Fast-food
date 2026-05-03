@@ -1,4 +1,5 @@
 import "./ApplicationPanel.css";
+import { Link } from "react-router";
 
 function ApplicationPanel() {
   return (
@@ -18,7 +19,7 @@ function ApplicationPanel() {
         </p>
 
         <div className="btn-group">
-          <button className="btn sign-in">Sign In</button>
+          <Link to="/sign-in" className="btn sign-in">Sign In</Link>
         </div>
       </div>
     </div>
