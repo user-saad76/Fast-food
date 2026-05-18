@@ -1,5 +1,6 @@
 import User from "../models/user.model.js"; 
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 
 export const CreateUser = async(req,res)=>{
@@ -33,9 +34,13 @@ export const LoginUser = async(req,res)=>{
             message:"invalid password"
         })
        }
-      
-    res.json(
-        { 
+
+
+       //Sign a JWT Token
+         const token = jwt.sign({user},process.env.JWT_SECRET,{ expiresIn: '1h' })
+         res.cookie("jwt-token",token,{httpOnly:true,maxAge:3600000,sameSite:"lax"});
+         
+         res.json({ 
             messages:' User have been logined',
             user
         });

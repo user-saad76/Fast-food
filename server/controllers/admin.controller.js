@@ -1,5 +1,6 @@
 import Admin from "../models/admin.model.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export const CreateAdmin = async (req, res) => {
   try {
@@ -37,7 +38,7 @@ export const CreateAdmin = async (req, res) => {
 export const LoginAdmin = async(req,res)=>{
 
     const {email,password} = req.body; 
-      const admin =  await Admin.find({email})
+      const admin =  await Admin.find({email}).select("-cnic")
       console.log('Get data from server',admin);
       if(!admin || admin.length === 0 ){
         return res.status(404).json({
@@ -53,6 +54,11 @@ export const LoginAdmin = async(req,res)=>{
             message:"invalid password"
         })
        }
+
+        //Sign a JWT Token
+                const token = jwt.sign({admin},process.env.JWT_SECRET_ADMIN,{ expiresIn: '1h' })
+                res.cookie("jwt-token-admin",token,{httpOnly:true,maxAge:3600000,sameSite:"lax"});
+                
       
     res.json(
         { 

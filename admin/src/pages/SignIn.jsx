@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "./SignIn.css";
-import usePost from "../hooks/usePost";
+//import usePost from "../hooks/usePost";
 
 const schema = z.object({
   email: z.string().email("Invalid email"),
@@ -19,12 +19,29 @@ function SignIn() {
     resolver: zodResolver(schema),
   });
 
-   const { postData, loading, error, data } = usePost('http://localhost:7000/admin/signin');
+  // const { postData, loading, error, data } = usePost('http://localhost:7000/admin/signin');
 
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log("Login Data:", data);
-    postData(data)
+      try {
+      const res = await fetch("http://localhost:7000/admin/signin", {
+        method: "POST",
+        credentials:"include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+      console.log(result);
+
+      alert("Admin login Successfully 🚀");
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
     
   };
 

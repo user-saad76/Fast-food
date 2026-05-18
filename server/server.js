@@ -8,6 +8,7 @@ import ServiceRoutes from './routes/Service.routes.js'
 import UserRoutes from './routes/user.routes.js'
 import AdminRoutes from './routes/admin.routes.js'
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import { ConnectDB } from './config/db.js';
 
 
@@ -25,6 +26,7 @@ ConnectDB().catch((e)=>console.log("Error in Connection",e));
 
 server.use(express.json());
 server.use(bodyParser.json())
+server.use(cookieParser())
 server.use(OfferRoutes)
 server.use(BannerRoutes)
 server.use(ServiceRoutes)
