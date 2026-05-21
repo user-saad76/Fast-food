@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "./SignIn.css";
+import {useNavigate} from "react-router-dom"
 //import usePost from "../hooks/usePost";
 
 const schema = z.object({
@@ -18,6 +19,8 @@ function SignIn() {
   } = useForm({
     resolver: zodResolver(schema),
   });
+   const navigate = useNavigate();
+
 
   // const { postData, loading, error, data } = usePost('http://localhost:7000/admin/signin');
 
@@ -39,6 +42,7 @@ function SignIn() {
       if(!result){
         alert("You are not verified admin ")
       }
+       navigate("/");
 
       reset();
     } catch (error) {

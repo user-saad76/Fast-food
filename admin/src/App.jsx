@@ -11,13 +11,17 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import UpdateOffers from './pages/UpdateOffers';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import { useFetch } from '../../client/src/hooks/useFetch';
 
 function App() {
+
+   const {data,error,loading}  = useFetch("http://localhost:7000/admin/me")
+      console.log("admin-data",data)
  
   return (
     <>
     <BrowserRouter>
-      <Navbar/>
+      <Navbar data={data}/>
      <Routes>
        <Route path='/' element = {<Home/>} />
         <Route path='/home' element = {<Home/>} />  

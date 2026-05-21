@@ -38,7 +38,7 @@ export const CreateAdmin = async (req, res) => {
 export const LoginAdmin = async(req,res)=>{
 
     const {email,password} = req.body; 
-      const admin =  await Admin.find({email}).select("-cnic")
+      const admin =  await Admin.findOne({email})
       console.log('Get data from server',admin);
       if(!admin || admin.length === 0 ){
         return res.status(404).json({
@@ -46,7 +46,7 @@ export const LoginAdmin = async(req,res)=>{
             message:'Admin not Found'
         })
       }
-       const isMatched = await bcrypt.compare(password,admin[0].password)
+         const isMatched = await bcrypt.compare( password,admin.password )
       
        if(!isMatched){
         return res.status(401).json({
@@ -56,7 +56,7 @@ export const LoginAdmin = async(req,res)=>{
        }
 
         //Sign a JWT Token
-                const token = jwt.sign({admin},process.env.JWT_SECRET_ADMIN,{ expiresIn: '1h' })
+                const token = jwt.sign({id:admin._id},process.env.JWT_SECRET_ADMIN,{ expiresIn: '1h' })
                 res.cookie("jwt-token-admin",token,{httpOnly:true,maxAge:3600000,sameSite:"lax"});
                 
       
@@ -66,4 +66,7 @@ export const LoginAdmin = async(req,res)=>{
             admin
         });
 }
-
+export const getAdmin = async(req,res,next)=>{
+    const admin =  await Admin.findById(req.admin.id);
+    res.status(200).json(admin)
+}

@@ -1,9 +1,9 @@
 
 import { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({data}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
   const [accountDropdown, setAccountDropdown] = useState(false);
@@ -72,8 +72,21 @@ function Navbar() {
               setAccountDropdown(!accountDropdown);
               setProductDropdown(false);
             }}
-          >
-            Account ▾
+          > 
+           { data?.name ? (<>
+                {data?.name} ▾
+              {accountDropdown && (
+              <ul className="dropdown-menu">
+                 <li>
+               <Link to="/profile">Profile</Link>
+                </li>
+                 <li>
+               <Link to="/sign-up">Sign Up</Link>
+                </li>
+              </ul>
+            )}
+           </>):(<>
+              Account ▾
             {accountDropdown && (
               <ul className="dropdown-menu">
                  <li>
@@ -84,6 +97,7 @@ function Navbar() {
                 </li>
               </ul>
             )}
+           </>)}
           </li>
         </ul>
       </div>
