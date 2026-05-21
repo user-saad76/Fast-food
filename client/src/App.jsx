@@ -11,14 +11,16 @@ import Contect from './pages/Contect';
 import InfoPage from './pages/InfoPage';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import { useFetch } from './hooks/useFetch';
 
 function App() {
   
-
+    const {data,error,loading}  = useFetch("http://localhost:7000/users/me")
+    console.log("user-data",data)
   return (
     <>
     <BrowserRouter>
-      <Navbar/>
+      <Navbar  data={data}/>
     <Routes>
        <Route path='/' element = {<Home/>} />
         <Route path='/home' element = {<Home/>} />

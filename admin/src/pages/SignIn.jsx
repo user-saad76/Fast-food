@@ -36,10 +36,13 @@ function SignIn() {
 
       const result = await res.json();
       console.log(result);
+      if(!result){
+        alert("You are not verified admin ")
+      }
 
-      alert("Admin login Successfully 🚀");
       reset();
     } catch (error) {
+       
       console.log(error);
     }
     

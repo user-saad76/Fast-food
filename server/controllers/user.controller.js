@@ -18,7 +18,7 @@ export const CreateUser = async(req,res)=>{
 export const LoginUser = async(req,res)=>{
 
     const {email,password} = req.body; 
-      const user =  await User.find({email})
+      const user =  await User.findOne({email})
       console.log('Get data from server',user);
       if(!user || user.length === 0 ){
         return res.status(404).json({
@@ -26,8 +26,7 @@ export const LoginUser = async(req,res)=>{
             message:'User not Found'
         })
       }
-       const isMatched = await bcrypt.compare(password,user[0].password)
-      
+      const isMatched = await bcrypt.compare( password,user.password )
        if(!isMatched){
         return res.status(401).json({
             success:false,
@@ -37,7 +36,7 @@ export const LoginUser = async(req,res)=>{
 
 
        //Sign a JWT Token
-         const token = jwt.sign({user},process.env.JWT_SECRET,{ expiresIn: '1h' })
+         const token = jwt.sign({ id:user._id },process.env.JWT_SECRET,{ expiresIn: '1h' })
          res.cookie("jwt-token",token,{httpOnly:true,maxAge:3600000,sameSite:"lax"});
          
          res.json({ 
@@ -46,3 +45,7 @@ export const LoginUser = async(req,res)=>{
         });
 }
 
+export const getMe = async(req,res,next)=>{
+    const user =  await User.findById(req.user.id);
+    res.status(200).json(user)
+}

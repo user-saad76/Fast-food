@@ -2,6 +2,7 @@ import express from 'express'
 
 import upload from '../utlis/multer.js';
 import { CreateAdmin, LoginAdmin } from '../controllers/admin.controller.js';
+//import { isAdminAuthenticated } from '../middleware/admin-authenticaton.js';
 
 const server = express();
 const router = express.Router()

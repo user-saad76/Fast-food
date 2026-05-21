@@ -38,6 +38,41 @@ const UserSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
+      // Orders Field
+    orders: [
+      {
+        productName: {
+          type: String,
+          required: true,
+        },
+
+        quantity: {
+          type: Number,
+          required: true,
+          default: 1,
+        },
+
+        price: {
+          type: Number,
+          required: true,
+        },
+
+        image: {
+          type: String,
+        },
+
+        status: {
+          type: String,
+          enum: ["pending", "processing", "delivered", "cancelled"],
+          default: "pending",
+        },
+
+        orderedAt: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
   },
   {
     timestamps: true, // createdAt + updatedAt

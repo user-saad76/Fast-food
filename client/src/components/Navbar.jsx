@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({data}) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -25,10 +25,21 @@ function Navbar() {
           <li><Link to ="/contect">Contact</Link></li>
 
           {/* Auth Buttons */}
+           {
+          data?.name ? (
           <div className="auth-buttons mobile">
-            <Link to="/sign-in" className="btn sign-in">Sign In</Link>
-           <Link to="/sign-up" className="btn sign-up">Sign Up</Link>
-          </div>
+         <Link to="/profile" className="btn sign-up">
+           {data.name}
+          </Link>
+           <Link to="/log-out" className="btn sign-in">logout</Link>
+           </div>
+          ) : (
+           <div className="auth-buttons mobile">
+          <Link to="/sign-in" className="btn sign-in">Sign In</Link>
+        <Link to="/sign-up" className="btn sign-up">Sign Up</Link>
+         </div>
+        )
+      }
         </ul>
 
         {/* Cart Icon */}
@@ -38,11 +49,24 @@ function Navbar() {
         </div>
 
         {/* Desktop Buttons */}
-        <div className="auth-buttons desktop">
+         {
+          data?.name ? (
+          <div className="auth-buttons desktop">
+         <Link to="/sign-up" className="btn sign-up">
+        {data.name}
+          </Link>
+           </div>
+          ) : (
+           <div className="auth-buttons desktop">
           <Link to="/sign-in" className="btn sign-in">Sign In</Link>
-           <Link to="/sign-up" className="btn sign-up">Sign Up</Link>
-        </div>
+        <Link to="/sign-up" className="btn sign-up">Sign Up</Link>
+         </div>
+        )
+      }
+          
 
+        
+        
       </div>
     </nav>
   );

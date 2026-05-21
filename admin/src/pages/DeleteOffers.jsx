@@ -24,6 +24,7 @@ function DeleteOffers() {
     try {
       await fetch(`http://localhost:7000/delete/offer/${data.slug}`, {
         method: "DELETE",
+         credentials:"include",
          headers: {
           "Content-Type": "application/json"
         }
