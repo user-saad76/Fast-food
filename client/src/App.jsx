@@ -12,15 +12,17 @@ import InfoPage from './pages/InfoPage';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import { useFetch } from './hooks/useFetch';
+import Profile from './pages/Profile';
+import AuthProvider from './contexts/AuthProvider';
 
 function App() {
   
-    const {data,error,loading}  = useFetch("http://localhost:7000/users/me")
-    console.log("user-data",data)
+    
   return (
     <>
+    <AuthProvider>
     <BrowserRouter>
-      <Navbar  data={data}/>
+      <Navbar />
     <Routes>
        <Route path='/' element = {<Home/>} />
         <Route path='/home' element = {<Home/>} />
@@ -31,13 +33,12 @@ function App() {
             {/* //<Route path='/food/:slug' element = {<DetailPage/>} /> */}
              <Route path='/offers/:slug' element = {<InfoPage/>} />
               <Route path='/sign-in' element = {<SignIn/>} />
-             
-
-     
-  
+               <Route path='/profile' element = {<Profile/>} />
+            
     </Routes>
     <Footer/>
-    </BrowserRouter>,
+    </BrowserRouter>
+    </AuthProvider>
     </>
   )
 }

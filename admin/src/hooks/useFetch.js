@@ -11,7 +11,7 @@ import { useState,useEffect } from "react"
               const getData = async ()=>{
                 setLoading(true)
                  try {
-                  const res = await fetch(url);
+                  const res = await fetch(url,{ credentials:"include"});
                     const data = await res.json();
                     console.log(data);
                    setData(data)

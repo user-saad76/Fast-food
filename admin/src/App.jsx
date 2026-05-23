@@ -12,16 +12,18 @@ import UpdateOffers from './pages/UpdateOffers';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import { useFetch } from '../../client/src/hooks/useFetch';
+import AuthProvider from './contexts/AuthProvider';
 
 function App() {
-
-   const {data,error,loading}  = useFetch("http://localhost:7000/admin/me")
-      console.log("admin-data",data)
+//  const {data,error,loading}  = useFetch("http://localhost:7000/admin/me")
+  //     console.log("admin-data",data)
+  
  
   return (
     <>
+    <AuthProvider>
     <BrowserRouter>
-      <Navbar data={data}/>
+      <Navbar />
      <Routes>
        <Route path='/' element = {<Home/>} />
         <Route path='/home' element = {<Home/>} />  
@@ -34,6 +36,7 @@ function App() {
             <Route path='/sign-in' element = {<SignIn/>} />  
     </Routes>
     </BrowserRouter>
+     </AuthProvider>
     </>
   )
 }

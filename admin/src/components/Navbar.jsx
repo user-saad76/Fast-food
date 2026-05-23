@@ -2,11 +2,13 @@
 import { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthProvider";
 
-function Navbar({data}) {
+function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
   const [accountDropdown, setAccountDropdown] = useState(false);
+     const {admin,error,loading} =  useAuth();
 
   return (
     <nav className="navbar">
@@ -73,8 +75,8 @@ function Navbar({data}) {
               setProductDropdown(false);
             }}
           > 
-           { data?.name ? (<>
-                {data?.name} ▾
+           { admin?.name ? (<>
+                {admin?.name} ▾
               {accountDropdown && (
               <ul className="dropdown-menu">
                  <li>

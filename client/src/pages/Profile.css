@@ -1,0 +1,374 @@
+/* =========================
+   GOOGLE FONT
+========================= */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f4f7ff;
+}
+
+/* =========================
+   PROFILE CONTAINER
+========================= */
+.profile-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  background: linear-gradient(to bottom right, #f4f7ff, #eef2ff);
+}
+
+/* =========================
+   PROFILE CARD
+========================= */
+.profile-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+  border: 1px solid #ecefff;
+  transition: 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+}
+
+/* =========================
+   PROFILE HEADER
+========================= */
+.profile-title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.profile-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 70%;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #4f46e5, #7c3aed);
+}
+
+/* =========================
+   PROFILE INFO GRID
+========================= */
+.profile-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+/* =========================
+   INFO BOX
+========================= */
+.info-box {
+  background: linear-gradient(145deg, #f8faff, #eef2ff);
+  border: 1px solid #dde4ff;
+  padding: 22px;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(79, 70, 229, 0.08);
+  transition: 0.5s;
+}
+
+.info-box:hover::before {
+  left: 0;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  border-color: #4f46e5;
+}
+
+.info-box span {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.info-box p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* =========================
+   ORDERS CARD
+========================= */
+.orders-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+  border: 1px solid #ecefff;
+}
+
+/* =========================
+   ORDERS TITLE
+========================= */
+.orders-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.orders-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 65%;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+}
+
+/* =========================
+   ORDERS WRAPPER
+========================= */
+.orders-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* =========================
+   ORDER BOX
+========================= */
+.order-box {
+  background: linear-gradient(145deg, #ffffff, #f8fbff);
+  border: 1px solid #e5e7ff;
+  padding: 24px;
+  border-radius: 20px;
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.order-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+}
+
+.order-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.12);
+}
+
+.order-box h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 18px;
+}
+
+/* =========================
+   ORDER DETAILS
+========================= */
+.order-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.order-details p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4b5563;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.order-details span {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* =========================
+   STATUS
+========================= */
+.status {
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.4px;
+}
+
+/* Pending */
+.pending {
+  background: #fff7d6;
+  color: #b7791f;
+}
+
+/* Processing */
+.processing {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* Delivered */
+.delivered {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* Cancelled */
+.cancelled {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+  .profile-container {
+    padding: 25px;
+  }
+
+  .profile-card,
+  .orders-card {
+    padding: 28px;
+  }
+
+  .profile-title,
+  .orders-title {
+    font-size: 28px;
+  }
+
+  .order-box h3 {
+    font-size: 21px;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 18px;
+    gap: 25px;
+  }
+
+  .profile-card,
+  .orders-card {
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .profile-title,
+  .orders-title {
+    font-size: 24px;
+  }
+
+  .profile-info,
+  .orders-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box p {
+    font-size: 16px;
+  }
+
+  .order-box h3 {
+    font-size: 20px;
+  }
+
+  .order-details p {
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 14px;
+  }
+
+  .profile-card,
+  .orders-card {
+    padding: 18px;
+  }
+
+  .profile-title,
+  .orders-title {
+    font-size: 22px;
+  }
+
+  .info-box,
+  .order-box {
+    padding: 18px;
+  }
+
+  .info-box p {
+    font-size: 15px;
+  }
+
+  .order-box h3 {
+    font-size: 18px;
+  }
+
+  .order-details p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 14px;
+  }
+
+  .status {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+}

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthProvider";
 
-function Navbar({data}) {
+function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+    
+  const {user,error,loading} = useAuth();
 
   return (
     <nav className="navbar">
@@ -26,20 +29,20 @@ function Navbar({data}) {
 
           {/* Auth Buttons */}
            {
-          data?.name ? (
+         user?.name ? (
           <div className="auth-buttons mobile">
          <Link to="/profile" className="btn sign-up">
-           {data.name}
+           {user.name}
           </Link>
            <Link to="/log-out" className="btn sign-in">logout</Link>
            </div>
-          ) : (
+          ) : ( 
            <div className="auth-buttons mobile">
           <Link to="/sign-in" className="btn sign-in">Sign In</Link>
         <Link to="/sign-up" className="btn sign-up">Sign Up</Link>
          </div>
         )
-      }
+      } 
         </ul>
 
         {/* Cart Icon */}
@@ -49,20 +52,21 @@ function Navbar({data}) {
         </div>
 
         {/* Desktop Buttons */}
-         {
-          data?.name ? (
+          {
+         user?.name ? (
           <div className="auth-buttons desktop">
          <Link to="/sign-up" className="btn sign-up">
-        {data.name}
+        {user.name}
           </Link>
+          <Link to="/log-out" className="btn sign-in">Logout</Link>
            </div>
-          ) : (
+          ) : ( 
            <div className="auth-buttons desktop">
           <Link to="/sign-in" className="btn sign-in">Sign In</Link>
         <Link to="/sign-up" className="btn sign-up">Sign Up</Link>
          </div>
-        )
-      }
+       )
+      } 
           
 
         
