@@ -4,6 +4,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "./SignUp.css";
 import usePost from "../hooks/usePost";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthProvider";
 
 
 const schema = z.object({
@@ -22,6 +24,13 @@ const schema = z.object({
 });
 
 function SignUp() {
+    
+     const {admin,loading:adminLoading ,error:adminError} =  useAuth();
+      
+         if(adminLoading) return <p>Loading.....</p>
+         if(admin && admin?.name) return <Navigate to = {'/'}/>
+
+
     const { postData, loading, error, data } = usePost('http://localhost:7000/admin/signup');
   const {
     register,

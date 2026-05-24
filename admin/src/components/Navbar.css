@@ -49,6 +49,7 @@
   color: #ffe6e6;
 }
 
+
 /* Dropdown */
 .dropdown-menu {
   position: absolute;
@@ -85,6 +86,7 @@
 .dropdown-menu a:hover li {
   background: #ff1a1a;
 }
+
 
 /* Hamburger */
 .hamburger {

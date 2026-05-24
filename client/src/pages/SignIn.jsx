@@ -4,7 +4,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "./SignIn.css";
 import usePost from "../hooks/usePost";
-import {useNavigate} from "react-router-dom"
+import {Navigate, useNavigate} from "react-router-dom"
+import { useAuth } from "../contexts/AuthProvider";
 
 const schema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -14,6 +15,12 @@ const schema = z.object({
 
 
 function SignIn() {
+   
+   const {user,loading:userLoading ,error:useError} =  useAuth();
+
+   if(userLoading) return <p>Loading.....</p>
+   if(user && user?.name) return <Navigate to = {'/'}/>
+
   const {
     register,
     handleSubmit,
@@ -28,7 +35,8 @@ function SignIn() {
   const onSubmit = async(data) => {
     console.log("Login Data:", data);
     await postData(data)
-    navigate("/");
+    //navigate("/");
+    window.location.href = '/';
   };
 
   return (

@@ -6,7 +6,7 @@ import { useAuth } from "../contexts/AuthProvider";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
     
-  const {user,error,loading} = useAuth();
+  const {user,error,loading,logout} = useAuth();
 
   return (
     <nav className="navbar">
@@ -34,7 +34,7 @@ function Navbar() {
          <Link to="/profile" className="btn sign-up">
            {user.name}
           </Link>
-           <Link to="/log-out" className="btn sign-in">logout</Link>
+           <button onClick={logout} className="btn sign-in">logout</button>
            </div>
           ) : ( 
            <div className="auth-buttons mobile">
@@ -58,7 +58,7 @@ function Navbar() {
          <Link to="/sign-up" className="btn sign-up">
         {user.name}
           </Link>
-          <Link to="/log-out" className="btn sign-in">Logout</Link>
+          <button onClick={logout} className="btn sign-in">Logout</button>
            </div>
           ) : ( 
            <div className="auth-buttons desktop">

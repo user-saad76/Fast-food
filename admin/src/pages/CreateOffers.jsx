@@ -49,6 +49,7 @@ function CreateOffers() {
       const res = await fetch("http://localhost:7000/create/offer", {
         method: "POST",
         body: formData,
+        credentials:"include"
       });
 
       const result = await res.json();

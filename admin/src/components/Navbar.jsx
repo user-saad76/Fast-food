@@ -8,7 +8,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
   const [accountDropdown, setAccountDropdown] = useState(false);
-     const {admin,error,loading} =  useAuth();
+     const {admin,error,loading,logout} =  useAuth();
 
   return (
     <nav className="navbar">
@@ -80,7 +80,7 @@ function Navbar() {
               {accountDropdown && (
               <ul className="dropdown-menu">
                  <li>
-               <Link to="/profile">Profile</Link>
+               <button onClick={logout}>logout</button> 
                 </li>
                  <li>
                <Link to="/sign-up">Sign Up</Link>
@@ -88,8 +88,8 @@ function Navbar() {
               </ul>
             )}
            </>):(<>
-              Account ▾
-            {accountDropdown && (
+              Account 
+            {/* {accountDropdown && (
               <ul className="dropdown-menu">
                  <li>
                <Link to="/logout">Logout</Link>
@@ -98,7 +98,7 @@ function Navbar() {
                <Link to="/sign-up">Sign Up</Link>
                 </li>
               </ul>
-            )}
+            )} */}
            </>)}
           </li>
         </ul>

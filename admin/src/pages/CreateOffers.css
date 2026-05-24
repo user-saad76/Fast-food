@@ -119,10 +119,10 @@
 }
 
 /* ================= TOAST CUSTOM ================= */
-.Toastify__toast {
+ .Toastify__toast {
   border-radius: 10px;
   font-size: 14px;
-}
+} 
 
 /* ================= RESPONSIVE ================= */
 

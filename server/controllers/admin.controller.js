@@ -70,3 +70,15 @@ export const getAdmin = async(req,res,next)=>{
     const admin =  await Admin.findById(req.admin.id);
     res.status(200).json(admin)
 }
+export const Logout = async(req,res,next)=>{
+   
+         res.cookie("jwt-token-admin","",{httpOnly:true,
+            maxAge:0,
+            secure:false
+            ,sameSite:"lax"
+        });
+         
+         res.json({ 
+            messages:' Admin have been logout'
+        });
+}
