@@ -24,7 +24,7 @@ function Navbar() {
 
         {/* Nav Links */}
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
-          <li>Dashboard</li>
+            <Link to = "/dashboard">Dashboard</Link> 
           <li>Orders</li>
            
 
@@ -78,14 +78,12 @@ function Navbar() {
            { admin?.name ? (<>
                 {admin?.name} ▾
               {accountDropdown && (
-              <ul className="dropdown-menu">
-                 <li>
+              <div className="dropdown-menu">
+                
                <button onClick={logout}>logout</button> 
-                </li>
-                 <li>
-               <Link to="/sign-up">Sign Up</Link>
-                </li>
-              </ul>
+              
+            
+              </div>
             )}
            </>):(<>
               Account 

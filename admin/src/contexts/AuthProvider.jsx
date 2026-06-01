@@ -33,9 +33,10 @@ function AuthProvider({children}){
       console.log(error);
     }
   };
+ 
     
     return(
-        <AuthContext.Provider value = {{admin:data,error,loading,logout }}>
+        <AuthContext.Provider value = {{admin,error,loading,logout }}>
            {children}
         </AuthContext.Provider>
     )

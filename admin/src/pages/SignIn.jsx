@@ -50,7 +50,7 @@ function SignIn() {
         alert("You are not verified admin ")
       }
        //navigate("/");
-        window.location.href = '/';
+        window.location.href = '/dashboard';
 
       reset();
     } catch (error) {

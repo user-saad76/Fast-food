@@ -1,9 +1,32 @@
+import { useAuth } from "../contexts/AuthProvider";
 import "./ApplicationPanel.css";
 import { Link } from "react-router";
 
 function ApplicationPanel() {
+ const { admin, loading, error } = useAuth();
   return (
-    <div className="app-panel">
+    <>
+    
+        { admin?.name ?(
+          <>
+
+           <div className="app-panel">
+      <div className="overlay"></div>
+
+      <div className="panel-container">
+        <h1 className="title"> Hi {admin.name}</h1>
+
+        <p className="welcome-text">
+          Welcome to Admin Panel of Fast Food Application.
+        </p>
+
+      </div>
+    </div>
+          
+          </>
+        ):(
+          <>
+           <div className="app-panel">
       <div className="overlay"></div>
 
       <div className="panel-container">
@@ -23,6 +46,17 @@ function ApplicationPanel() {
         </div>
       </div>
     </div>
+          
+          </>
+        )
+
+
+
+        }
+
+
+   
+      </>
   );
 }
 

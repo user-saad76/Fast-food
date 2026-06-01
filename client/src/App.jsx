@@ -14,6 +14,7 @@ import SignIn from './pages/SignIn';
 import { useFetch } from './hooks/useFetch';
 import Profile from './pages/Profile';
 import AuthProvider from './contexts/AuthProvider';
+import Protected from './pages/Protected';
 
 function App() {
   
@@ -33,7 +34,7 @@ function App() {
             {/* //<Route path='/food/:slug' element = {<DetailPage/>} /> */}
              <Route path='/offers/:slug' element = {<InfoPage/>} />
               <Route path='/sign-in' element = {<SignIn/>} />
-               <Route path='/profile' element = {<Profile/>} />
+               <Route path='/profile' element = {<Protected><Profile/></Protected>} />
             
     </Routes>
     <Footer/>
