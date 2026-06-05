@@ -2,11 +2,15 @@ import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthProvider";
+import { useCart } from "../contexts/CartProvider";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
     
   const {user,error,loading,logout} = useAuth();
+
+    const {cartState} =useCart();
+    console.log("Navbar Cart",cartState);
 
   return (
     <nav className="navbar">
@@ -45,11 +49,11 @@ function Navbar() {
       } 
         </ul>
 
-        {/* Cart Icon */}
-        <div className="cart">
-          <i className="fa-solid fa-cart-shopping"></i>
-          <span className="cart-count">2</span>
-        </div>
+       {/* Cart Icon */}
+         <Link to="/cart-page" className="cart">
+         <i className="fa-solid fa-cart-shopping"></i>
+          <span className="cart-count">{cartState?.length}</span>
+        </Link>
 
         {/* Desktop Buttons */}
           {

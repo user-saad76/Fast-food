@@ -15,6 +15,8 @@ import { useFetch } from './hooks/useFetch';
 import Profile from './pages/Profile';
 import AuthProvider from './contexts/AuthProvider';
 import Protected from './pages/Protected';
+import CartProvider from './contexts/CartProvider';
+import CartPage from './pages/CartPage';
 
 function App() {
   
@@ -22,6 +24,7 @@ function App() {
   return (
     <>
     <AuthProvider>
+      <CartProvider>
     <BrowserRouter>
       <Navbar />
     <Routes>
@@ -35,10 +38,12 @@ function App() {
              <Route path='/offers/:slug' element = {<InfoPage/>} />
               <Route path='/sign-in' element = {<SignIn/>} />
                <Route path='/profile' element = {<Protected><Profile/></Protected>} />
+                <Route path='/cart-page' element = {<Protected><CartPage/></Protected>} />
             
     </Routes>
     <Footer/>
     </BrowserRouter>
+    </CartProvider>
     </AuthProvider>
     </>
   )

@@ -2,12 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./Offers.css";
 import { Link } from "react-router"; // ✅ FIXED
 import { useFetch } from "../hooks/useFetch";
+import { useCart } from "../contexts/CartProvider";
+import { useAuth } from "../contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 function Offers() {
         const {data:offers,error,loading} = useFetch("http://localhost:7000/offers");
+         const {user,error:OfferError,loading:OfferLoading,logout} = useAuth();
+          const {addToCart} = useCart();
+
+          const navigate = useNavigate();
+
+          const redirectFunction = ()=>{
+             navigate('/sign-in');
+          }
+        
   return (
     <section className="offers">
-      
       {/* Title */}
       <h2 className="offers-title">
         <i className="fa-solid fa-fire"></i> Special Offers
@@ -49,10 +60,15 @@ function Offers() {
                     <i className="fa-solid fa-money-bill-wave"></i> Rs {item.price}
                   </span>
                 </div>
+                 {
+                   user?.name ?<button className="order-btn" onClick={()=>addToCart(item)}> 
+                  <i className="fa-solid fa-cart-shopping"></i> Order Now</button>
+                  :<button className="order-btn" onClick={redirectFunction}> <i className="fa-solid fa-cart-shopping"></i> Order Now </button>
+                } 
 
-                <button className="order-btn">
+                {/* <button className="order-btn" onClick={()=>addToCart(item)}>
                   <i className="fa-solid fa-cart-shopping"></i> Order Now
-                </button>
+                </button> */}
 
               </div>
             </div>

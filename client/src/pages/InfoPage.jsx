@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./InfoPage.css";
-import { useParams } from "react-router";
+import {  useParams } from "react-router";
+import { useCart } from "../contexts/CartProvider";
+import { useAuth } from "../contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 function InfoPage() {
   const { slug } = useParams();
   const [offer, setOffers] = useState({});
+   const {addToCart,IncrementCart,decrementCart} = useCart();
+    const {user,error,loading,logout} = useAuth();
+
+
+      const navigate = useNavigate();
+
+          const redirectFunction = ()=>{
+             navigate('/sign-in');
+          }
 
   useEffect(() => {
     const getOffersBySlug = async () => {
@@ -58,14 +70,19 @@ function InfoPage() {
 
           {/* QUANTITY */}
           <div className="quantity-box">
-            <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>-</button>
+            <button onClick={()=>decrementCart(offer._id)}>-</button>
             <span>{quantity}</span>
-            <button onClick={() => setQuantity(q => q + 1)}>+</button>
+            <button onClick={()=>IncrementCart(offer._id)}>+</button>
           </div>
+           
+            {
+                user?.name ?<button className="order-btn" onClick={()=>addToCart(offer)}> 
+                  <i className="fa-solid fa-cart-shopping"></i> Order Now</button>
+                  :<button className="order-btn" onClick={redirectFunction}>
+                    <i className="fa-solid fa-cart-shopping"></i> Order Now </button>
+                } 
 
-          <button className="order-btn">
-            <i className="fa-solid fa-cart-shopping"></i> Order Now
-          </button>
+
 
         </div>
 
