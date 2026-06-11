@@ -10,18 +10,31 @@ function ApplicationPanel() {
         { admin?.name ?(
           <>
 
-           <div className="app-panel">
-      <div className="overlay"></div>
+        <div className="app-panel">
+    <div className="overlay"></div>
 
-      <div className="panel-container">
-        <h1 className="title"> Hi {admin.name}</h1>
+    <div className="panel-container profile-card">
 
-        <p className="welcome-text">
-          Welcome to Admin Panel of Fast Food Application.
-        </p>
+      <img
+        src={admin.image?.secure_url}
+        alt={admin.name}
+        className="admin-image"
+      />
 
+      <h1 className="title">{admin.name}</h1>
+
+      <div className="admin-info">
+        <p><strong>Post:</strong> {admin.post}</p>
+        <p><strong>Email:</strong> {admin.email}</p>
+        <p><strong>Phone:</strong> {admin.phone}</p>
       </div>
+
+      <p className="welcome-text">
+        Welcome to Fast Food Admin Panel
+      </p>
+
     </div>
+  </div>
           
           </>
         ):(

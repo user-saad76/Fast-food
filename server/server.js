@@ -10,6 +10,7 @@ import AdminRoutes from './routes/admin.routes.js'
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import { ConnectDB } from './config/db.js';
+import paymentRoutes from './routes/payment.routes.js'
 
 
 
@@ -32,11 +33,7 @@ server.use(BannerRoutes)
 server.use(ServiceRoutes)
 server.use(UserRoutes)
 server.use(AdminRoutes)
-
-
-
-
-
+server.use(paymentRoutes)
 
 
 server.listen(port, ()=>{

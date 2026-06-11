@@ -15,6 +15,44 @@ export const CreateUser = async(req,res)=>{
             data:data
         });
 }
+
+export const UpdateUserInCheckout = async(req,res)=>{
+    const data = req.body;
+      const {id} = req.params;
+      console.log(" Update checkout data",data); 
+
+     try {
+            const userObj = {
+          city:data.city,
+          zipCode:data.zipCode,
+          paymentMethod:data.paymentMethod,
+          address1:data.address1
+       }
+       const updated = await User.findByIdAndUpdate(id,userObj)
+       console.log("updated user details",userObj)
+     
+        res.status(200).json({
+        success: true,
+        message: "User details updated successfully",
+         updated
+        });
+        
+     } catch (error) {
+        res.status(400).json({
+          success: false,
+        message: message?.error || "Failed to update user"
+       });
+     }
+}
+
+
+
+
+
+
+
+
+
 export const LoginUser = async(req,res)=>{
 
     const {email,password} = req.body; 

@@ -4,14 +4,14 @@ const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      //required: true,
       trim: true,
       minlength: 3,
     },
 
     email: {
       type: String,
-      required: true,
+      //required: true,
       unique: true,
       trim: true,
       lowercase: true,
@@ -19,14 +19,20 @@ const UserSchema = new mongoose.Schema(
 
     address: {
       type: String,
-      required: true,
+     // required: true,
+      trim: true,
+      minlength: 5,
+    },
+     address1: {
+      type: String,
+      //required: true,
       trim: true,
       minlength: 5,
     },
 
     phone: {
       type: String,
-      required: true,
+     // required: true,
       unique: true,
       trim: true,
       minlength: 11,
@@ -35,9 +41,19 @@ const UserSchema = new mongoose.Schema(
 
     password: {
       type: String,
-      required: true,
+      // required: true,
       minlength: 6,
-    },
+      },
+
+     city: {
+           type: String
+          },
+      zipCode: {
+           type: Number
+          },
+          paymentMethod: {
+              type: String
+          },
       // Orders Field
     orders: [
       {

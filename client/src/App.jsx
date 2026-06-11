@@ -17,6 +17,9 @@ import AuthProvider from './contexts/AuthProvider';
 import Protected from './pages/Protected';
 import CartProvider from './contexts/CartProvider';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   
@@ -39,9 +42,15 @@ function App() {
               <Route path='/sign-in' element = {<SignIn/>} />
                <Route path='/profile' element = {<Protected><Profile/></Protected>} />
                 <Route path='/cart-page' element = {<Protected><CartPage/></Protected>} />
+                 <Route path='/checkout' element = {<Protected><CheckoutPage/></Protected>} />
             
     </Routes>
     <Footer/>
+
+   <ToastContainer
+      position="top-right"
+      autoClose={3000}
+    />
     </BrowserRouter>
     </CartProvider>
     </AuthProvider>
