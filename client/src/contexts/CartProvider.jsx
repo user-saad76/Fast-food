@@ -14,15 +14,12 @@ const CartContext = createContext();
             ? {...item,quantity:item.quantity+1}:item);
         }
         else{
-           console.log("state of cart",state)
         action.payload.quantity = 1;
         
         let newState = [...state,action.payload]
          console.log("NewState",newState)
         state = newState;
         return state;
-        console.log("Updated State",state)
-        console.log("add to cart dispatcher called",action.payload);
 
         }
 
@@ -41,7 +38,7 @@ const CartContext = createContext();
         let newState = state.map(item => item._id == action.payload ?
          {...item,quantity:item.quantity+1}:item
         );
-        console.log("increment quantity",newState)
+       
         return newState;
     }
 

@@ -20,6 +20,8 @@ import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OrderSuccess from './pages/OrderSuccess';
+import OrderCancel from './pages/OrderCancel';
 
 function App() {
   
@@ -43,6 +45,8 @@ function App() {
                <Route path='/profile' element = {<Protected><Profile/></Protected>} />
                 <Route path='/cart-page' element = {<Protected><CartPage/></Protected>} />
                  <Route path='/checkout' element = {<Protected><CheckoutPage/></Protected>} />
+                  <Route path='/success' element = {<OrderSuccess/>} />
+                   <Route path='/cancel' element = {<Protected><OrderCancel/></Protected>} />
             
     </Routes>
     <Footer/>

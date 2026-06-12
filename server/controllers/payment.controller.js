@@ -24,13 +24,17 @@ export const stripePayment = async(req,res,next)=>{
 
 
       console.log(lineItems)
+      console.log("For client reference id ",req?.user?._id);
 
 
       const session = await stripe.checkout.sessions.create({
-       success_url: 'http://localhost:5173/success',
+       success_url: 'http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url:'http://localhost:5173/cancel',
       line_items:lineItems,
      mode: 'payment',
       payment_method_types: ["card"],
+      client_reference_id: req?.user?.id
+      
     });
 
     res.json({ 
@@ -44,4 +48,27 @@ export const stripePayment = async(req,res,next)=>{
           message:error?.message || "Something went wrong "
          })
     }
+}
+
+export const confirmOrder = async (req,res,next)=>{
+      try{
+
+        const {session_id} =req.body;
+        console.log("Session id received for order confirmation",session_id);
+        const session =  await stripe.checkout.sessions.retrieve(session_id);
+        console.log("Session details retrieved from Stripe",session);
+
+        const lineItems = await stripe.checkout.sessions.listLineItems(session_id,{
+          limit:100
+        
+        });
+        res.json({
+           session,
+           lineItems
+        })
+
+      }
+      catch(error){
+         console.log("session retrieval error",error);
+      }
 }
