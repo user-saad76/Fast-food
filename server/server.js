@@ -13,6 +13,7 @@ import { ConnectDB } from './config/db.js';
 import paymentRoutes from './routes/payment.routes.js'
 import OrderRoutes from './routes/order.routes.js'
 import CashOrderRoutes from './routes/CashOrder.routes.js'
+import CartRoutes from './routes/cart.routes.js'
 
 
 
@@ -38,6 +39,7 @@ server.use(AdminRoutes)
 server.use(paymentRoutes)
 server.use(OrderRoutes)
 server.use(CashOrderRoutes)
+server.use(CartRoutes)
 
 
 server.listen(port, ()=>{

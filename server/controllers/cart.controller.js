@@ -12,23 +12,79 @@ export const addToCart = async(req,res,next) =>{
  } catch (error) {
     console.log(error)
       res.json({
-        success:true,
+        success:false,
         message: error?.message || " Could not add item to the cart"
       })
  } 
 }
-export const removeFromCart = (req,res) =>{
- 
+export const removeFromCart = async(req,res) =>{
+    try {
+      const {id} = req.params;
+      const cartItem = await Cart.findByIdAndDelete(id)
+       res.status(201).json({
+        success:true,
+        cartItem
+      })
+      
+    } catch (error) {
+        console.log(error)
+      res.json({
+        success:false,
+        message: error?.message || " Could not remove item to the cart"
+      })
+    }
 }
 export const ClearCart = (req,res) =>{
  
 }
-export const updateCart = (req,res) =>{
-   
+export const updateCart = async(req,res) =>{
+   try {
+       const {id,type} = req.params;
+       
+       if(!id || !type) return;
+
+       if(type === 'INCREMENT'){
+          await Cart.findByIdAndUpdate(id,quantity)
+       }
+       else if(type === 'DECREMENT'){
+
+       }
+       else{
+        return;
+       }
+
+   } catch (error) {
+    
+   }
 }
-export const getAllCartItems = (req,res) =>{
-     
+export const getAllCartItems = async(req,res) =>{
+     try {
+        const cartItems = await Cart.find({});
+         res.status(200).json({
+        success:true,
+        cartItems
+      })
+     } catch (error) {
+            console.log(error)
+      res.json({
+        success:false,
+        message: error?.message || " Could not get all items to the cart"
+      })
+     }  
 }
-export const getSingleCartItem = (req,res) =>{
-  
+export const getSingleCartItem = async(req,res) =>{
+  try {
+       const {id} = req.params;
+      const cartItem = await Cart.findById(id)
+       res.status(201).json({
+        success:true,
+        cartItem
+      })
+  } catch (error) {
+          console.log(error)
+      res.json({
+        success:false,
+        message: error?.message || " Could not get single item to the cart"
+      })
+  }
 }
