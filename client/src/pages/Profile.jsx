@@ -2,9 +2,12 @@ import React from "react";
 import "./Profile.css";
 import { useAuth } from "../contexts/AuthProvider";
 
+
 function Profile() {
 
    const {user,error,loading} = useAuth();
+  
+
   // Dummy User Data
   // const user = {
   //   name: "Saad Khan",
@@ -78,16 +81,16 @@ function Profile() {
       <div className="orders-card">
         <h2 className="orders-title">My Orders</h2>
 
-        <div className="orders-wrapper">
-          {user.orders.map((order, index) => (
+        {/* <div className="orders-wrapper">
+          {cartState?.map((order, index) => (
             <div className="order-box" key={index}>
               <img
-                src={order.image}
-                alt={order.productName}
+                src={order?.image?.secure_url}
+                alt={order.title}
                 className="order-image"
               />
 
-              <h3>{order.productName}</h3>
+              <h3>{order.title}</h3>
 
               <div className="order-details">
                 <p>
@@ -107,7 +110,7 @@ function Profile() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

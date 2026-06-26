@@ -46,6 +46,7 @@ function App() {
                 <Route path='/cart-page' element = {<Protected><CartPage/></Protected>} />
                  <Route path='/checkout' element = {<Protected><CheckoutPage/></Protected>} />
                   <Route path='/success' element = {<OrderSuccess/>} />
+                   <Route path='/cancel' element = {<OrderCancel/>} />
                    <Route path='/cancel' element = {<Protected><OrderCancel/></Protected>} />
             
     </Routes>

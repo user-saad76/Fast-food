@@ -6,8 +6,10 @@ function OrderSuccess() {
   const [sessionId, setSessionId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
+  const [paymentIntentId, setPaymentIntentId] = useState("");
+  const [called,setCalled] = useState(false);
 
-  const orderId = "#" + Math.floor(100000 + Math.random() * 900000);
+  
 
   // Get Stripe Session ID from URL
   useEffect(() => {
@@ -25,7 +27,7 @@ function OrderSuccess() {
 
   // Confirm Order
   useEffect(() => {
-    if (!sessionId) return;
+    if (!sessionId || called) return;
 
     const confirmOrder = async () => {
       try {
@@ -37,7 +39,8 @@ function OrderSuccess() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              session_id: sessionId,
+              session_id: sessionId,  
+           
             }),
           }
         );
@@ -45,6 +48,7 @@ function OrderSuccess() {
         const result = await response.json();
 
         console.log("Order confirmation response:", result);
+        setPaymentIntentId(result.order.stripePaymentIntentId);
 
         if (!response.ok) {
           throw new Error(result.message || "Failed to confirm order");
@@ -58,6 +62,7 @@ function OrderSuccess() {
         console.error("Order Confirmation Error:", error);
       } finally {
         setLoading(false);
+        setCalled(true);
       }
     };
 
@@ -113,13 +118,13 @@ function OrderSuccess() {
 
         <div className="order-details">
           <span className="order-label">Order Number</span>
-          <h3 className="order-id">{orderId}</h3>
+          <h3 className="order-id">{paymentIntentId}</h3>
         </div>
 
         <div className="info-box">
           <p>
             A confirmation email containing your order details has been sent to
-            your registered email address.
+            your registered email address/phone number.
           </p>
         </div>
 

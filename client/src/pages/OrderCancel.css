@@ -1,0 +1,152 @@
+/* =========================
+   ORDER CANCEL PAGE ONLY
+   ========================= */
+
+.ocancel-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #f8fafc;
+  box-sizing: border-box;
+}
+
+.ocancel-card {
+  width: 100%;
+  max-width: 550px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  animation: ocancelFadeIn 0.5s ease;
+}
+
+.ocancel-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 42px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ocancel-title {
+  margin: 0;
+  font-size: 2rem;
+  color: #111827;
+  font-weight: 700;
+}
+
+.ocancel-message {
+  margin-top: 16px;
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.ocancel-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ocancel-btn {
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.ocancel-btn-primary {
+  background: #dc2626;
+  color: #fff;
+}
+
+.ocancel-btn-primary:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+.ocancel-btn-secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.ocancel-btn-secondary:hover {
+  background: #d1d5db;
+  transform: translateY(-2px);
+}
+
+@keyframes ocancelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   TABLETS
+   ========================= */
+
+@media (max-width: 768px) {
+  .ocancel-card {
+    padding: 30px 22px;
+  }
+
+  .ocancel-title {
+    font-size: 1.7rem;
+  }
+
+  .ocancel-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 480px) {
+  .ocancel-container {
+    padding: 16px;
+  }
+
+  .ocancel-card {
+    padding: 25px 18px;
+  }
+
+  .ocancel-title {
+    font-size: 1.5rem;
+  }
+
+  .ocancel-message {
+    font-size: 0.95rem;
+  }
+
+  .ocancel-actions {
+    flex-direction: column;
+  }
+
+  .ocancel-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

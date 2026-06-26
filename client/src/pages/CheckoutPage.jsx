@@ -10,6 +10,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { loadStripe } from "@stripe/stripe-js";
 import { useCart } from "../contexts/CartProvider";
+import usePost from "../hooks/usePost";
 
 
 const stripePromise = loadStripe(
@@ -33,6 +34,7 @@ function CheckoutPage() {
        const [error, setError] = useState(null);
        const [data, setData] = useState(null);
        const {cartState} = useCart()
+    
    
   const {
     register,
@@ -54,6 +56,64 @@ function CheckoutPage() {
 
 
   const onSubmit = async(data) => {
+
+     // Cash on delivery 
+      if (data.paymentMethod === "cash on delivery") {
+
+      try{
+      const items = cartState.map((item) => ({
+        title: item.title,
+        price: item.price,
+        quantity: item.quantity,
+      }));
+
+      const totalAmount = cartState.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+
+      const orderRes = await fetch(
+        "http://localhost:7000/order/cash-on-delivery",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: user?._id,
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            address1: data.address1,
+            city: data.city,
+            zipCode: data.zipCode,
+            paymentMethod: data.paymentMethod,
+            items,
+            totalAmount,
+          }),
+        }
+      );
+
+      const orderResult = await orderRes.json();
+
+      if (!orderRes.ok) {
+        throw new Error(orderResult.message);
+      }
+
+      // toast.success("Order placed successfully!");
+    
+  } catch (error) {
+    console.error(error);
+    toast.error(error.message);
+  } finally {
+    setLoading(false);
+  }
+
+};
+
+
+
      try {
       const res = await fetch(`http://localhost:7000/users/update-in-checkout/${user?._id}`, {
         method: "PUT",
@@ -65,13 +125,14 @@ function CheckoutPage() {
       });
    
       const result = await res.json();
+      console.log("Update Result:", result?.lineItems?.data);
 
        if (!res.ok) {
            toast.error(result.message);
            throw new Error(result.message);
         }
 
-      setData(result);
+      setData(result?.lineItems?.data);
 
       if (result.success) {
       toast.success(result.message);
@@ -85,6 +146,8 @@ function CheckoutPage() {
       setLoading(false);
     }
 
+
+   
     
   };
 
@@ -124,6 +187,7 @@ function CheckoutPage() {
      } catch (error) {
        console.error(error);
      }
+
   };
 
   return (
@@ -216,21 +280,22 @@ function CheckoutPage() {
 
               <label
                 className={`payment-card ${
-                  paymentMethod === "cod" ? "active" : ""
+                  paymentMethod === "cash on delivery" ? "active" : ""
                 }`}
               >
                 <input
                   type="radio"
-                  value="cod"
+                  value="cash on delivery"
+                  disabled={loading}
                   {...register("paymentMethod")}
                 />
-                Cash On Delivery
+               {loading ? "Placing Order..." : "Cash on Delivery"}
               </label>
 
               <span>{errors.paymentMethod?.message}</span>
             </div>
 
-            <button className="place-order-btn">
+            <button className="place-order-btn"  >
                 Cash on Delivery
             </button>
               <button  type="button" className="place-order-btn" onClick={handleCheckout}>

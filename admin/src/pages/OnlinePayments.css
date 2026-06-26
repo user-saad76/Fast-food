@@ -1,0 +1,216 @@
+/* Main Page */
+.payment-page {
+  padding: 20px;
+  background: #f6f7fb;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.page-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Grid */
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* Card */
+.payment-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-header h3 {
+  font-size: 18px;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Status */
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.status.paid {
+  background: #28a745;
+}
+
+.status.pending {
+  background: #ff9800;
+}
+
+/* Meta */
+.meta {
+  font-size: 12px;
+  color: #666;
+  margin: 8px 0 12px;
+}
+
+/* Items */
+.items {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  overflow-x: auto;
+}
+
+/* Item row */
+.item-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 6px 0;
+  font-size: 14px;
+  min-width: 250px;
+}
+
+.item-row.title {
+  font-weight: bold;
+  color: #444;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Total */
+.total {
+  margin-top: 10px;
+  font-size: 15px;
+  text-align: right;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn {
+  flex: 1;
+  padding: 9px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.update {
+  background: #007bff;
+  color: white;
+}
+
+.update:hover {
+  background: #0056b3;
+}
+
+.delete {
+  background: #dc3545;
+  color: white;
+}
+
+.delete:hover {
+  background: #a71d2a;
+}
+/* Stripe ID */
+.stripe-id {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 10px;
+  background: #f1f3f5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  word-break: break-all;
+}
+
+.stripe-id span {
+  color: #111;
+  font-weight: bold;
+}
+
+/* =========================
+   RESPONSIVE BREAKPOINTS
+========================= */
+
+/* 📱 Mobile (small phones) */
+@media (max-width: 480px) {
+  .payment-page {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .card-header h3 {
+    font-size: 16px;
+  }
+
+  .item-row {
+    font-size: 12px;
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 7px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
+
+/* 📱 Tablets */
+@media (max-width: 768px) {
+  .payment-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+}
+
+/* 💻 Small laptops */
+@media (max-width: 1024px) {
+  .payment-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+/* 🖥 Large screens */
+@media (min-width: 1440px) {
+  .payment-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    margin: auto;
+  }
+}

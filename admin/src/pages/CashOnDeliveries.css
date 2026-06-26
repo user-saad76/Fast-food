@@ -1,0 +1,181 @@
+/* Page Wrapper */
+.cod-page {
+  padding: 20px;
+  background: #f6f7fb;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.cod-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #222;
+  text-align: left;
+}
+
+/* Grid */
+.cod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.cod-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.cod-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Header */
+.cod-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cod-header h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Status */
+.cod-status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.cod-status.pending {
+  background: #ff9800;
+}
+
+.cod-status.delivered {
+  background: #28a745;
+}
+
+/* Customer Info */
+.cod-info {
+  font-size: 13px;
+  color: #555;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Items */
+.cod-items {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  overflow-x: auto;
+}
+
+/* Row */
+.cod-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 6px 0;
+  font-size: 14px;
+  min-width: 250px;
+}
+
+.cod-row.title {
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  color: #444;
+}
+
+/* Total */
+.cod-total {
+  margin-top: 10px;
+  text-align: right;
+  font-size: 15px;
+}
+
+/* Buttons */
+.cod-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn {
+  flex: 1;
+  padding: 9px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.update {
+  background: #007bff;
+  color: white;
+}
+
+.update:hover {
+  background: #0056b3;
+}
+
+.delete {
+  background: #dc3545;
+  color: white;
+}
+
+.delete:hover {
+  background: #a71d2a;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Mobile */
+@media (max-width: 480px) {
+  .cod-page {
+    padding: 12px;
+  }
+
+  .cod-title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .cod-row {
+    font-size: 12px;
+  }
+
+  .cod-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 7px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .cod-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1440px) {
+  .cod-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    margin: auto;
+  }
+}

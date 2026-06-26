@@ -15,6 +15,8 @@ import { useFetch } from '../../client/src/hooks/useFetch';
 import AuthProvider from './contexts/AuthProvider';
 import Dashboard from './pages/Dashboard';
 import Protected from './pages/Protected';
+import OnlinePayment from './pages/OnlinePayments';
+import CashOnDeliveries from './pages/CashOnDeliveries';
 
 function App() {
 //  const {data,error,loading}  = useFetch("http://localhost:7000/admin/me")
@@ -37,6 +39,8 @@ function App() {
            <Route path='/sign-up' element = {<SignUp/>} />  
             <Route path='/sign-in' element = {<SignIn/>} /> 
              <Route path='/dashboard' element = {<Protected><Dashboard/></Protected>} />  
+              <Route path='/online-payments' element = {<Protected><OnlinePayment/></Protected>} /> 
+              <Route path='/cash-on-deliveries' element = {<Protected><CashOnDeliveries/></Protected>} /> 
     </Routes>
     </BrowserRouter>
      </AuthProvider>

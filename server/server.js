@@ -11,6 +11,8 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import { ConnectDB } from './config/db.js';
 import paymentRoutes from './routes/payment.routes.js'
+import OrderRoutes from './routes/order.routes.js'
+import CashOrderRoutes from './routes/CashOrder.routes.js'
 
 
 
@@ -34,6 +36,8 @@ server.use(ServiceRoutes)
 server.use(UserRoutes)
 server.use(AdminRoutes)
 server.use(paymentRoutes)
+server.use(OrderRoutes)
+server.use(CashOrderRoutes)
 
 
 server.listen(port, ()=>{
