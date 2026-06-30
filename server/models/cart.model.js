@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const CartItemSchema = new mongoose.Schema(
   {
-    productId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-      required: true,
-    },
+     productId: {
+       type: mongoose.Schema.Types.ObjectId,
+       ref: "Product",
+       //required: true,
+     },
 
     title: {
       type: String,
@@ -26,11 +26,11 @@ const CartItemSchema = new mongoose.Schema(
       default: 1,
       min: 1,
     },
-
+   
     img: {
       secure_url: {
         type: String,
-        required: true,
+       // required: true,
       },
     },
   },

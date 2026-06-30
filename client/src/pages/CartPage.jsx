@@ -19,10 +19,10 @@ function CartPage() {
       <div className="cart-layout">
         {/* Cart Items */}
         <div className="cart-items">
-          {cartState.map((item) => (
+          {cartState?.map((item) => (
             <div className="cart-card" key={item.id}>
               <img
-                src={item.img.secure_url}
+                src={item.img?.secure_url}
                 alt={item.title}
                 className="cart-image"
               />

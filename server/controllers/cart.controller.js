@@ -3,12 +3,21 @@ import Cart from '../models/cart.model.js'
 
 export const addToCart = async(req,res,next) =>{
  try{
-      const body = req.body;
-      const cartItem = await Cart.create(body);
-      res.status(201).json({
-        success:true,
-        cartItem
-      })
+  const { _id:productId,title,price,img} = req.body;
+  const {userId} = req.params;
+       const cart = await getUserCart(req.params.userId);
+
+       console.log("Get user cart",cart);
+       const item = cart.items.find(i =>i.productId?.toString() === productId);
+       if(item){
+        item.quantity += 1;
+       }
+       else{
+         cart.items.push({productId,title,img,price,quantity:1})
+       }
+       await cart.save();
+       res.json(cart);
+
  } catch (error) {
     console.log(error)
       res.json({
@@ -19,12 +28,12 @@ export const addToCart = async(req,res,next) =>{
 }
 export const removeFromCart = async(req,res) =>{
     try {
-      const {id} = req.params;
-      const cartItem = await Cart.findByIdAndDelete(id)
-       res.status(201).json({
-        success:true,
-        cartItem
-      })
+      const {productId,userId} = req.params;
+      console.log("productId and userId", {productId,userId})
+      const cart = await getUserCart(userId);
+      cart.items = cart.items.filter(i => i.productId.toString() == productId);
+      await cart.save();
+       res.json(cart)
       
     } catch (error) {
         console.log(error)
@@ -57,13 +66,16 @@ export const updateCart = async(req,res) =>{
     
    }
 }
-export const getAllCartItems = async(req,res) =>{
+export const getAllCartItemsByUser = async(req,res) =>{
      try {
-        const cartItems = await Cart.find({});
-         res.status(200).json({
-        success:true,
-        cartItems
-      })
+        const {userId} = req.params;
+        console.log("cartItems userId",userId)
+        const cartItems = await Cart.findOne({userId});
+        console.log("cartItems",cartItems)
+          res.status(200).json({
+         success:true,
+          data:cartItems?.items || []
+       })
      } catch (error) {
             console.log(error)
       res.json({
@@ -88,3 +100,12 @@ export const getSingleCartItem = async(req,res) =>{
       })
   }
 }
+
+export const getUserCart = async(userId) =>{
+    
+         let cart = await Cart.findOne({userId})
+         if(!cart){
+            cart = await Cart.create({userId,items:[]})
+         }
+         return cart;
+     }
