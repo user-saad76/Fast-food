@@ -1,12 +1,22 @@
+import { useOnlineOrder } from "../contexts/OnlineOrderProvider";
 import { useFetch } from "../hooks/useFetch";
 import "./OnlinePayments.css";
 
 function OnlinePayment() {
 
-     const { data,loading,error}  = useFetch('http://localhost:7000/orders')
-     console.log("payments",data)
+    // const { data,loading,error}  = useFetch('http://localhost:7000/orders')
+    // console.log("payments",data)
 
-     const payments = data?.orders || [];
+     const {
+           orders,
+          loading,
+          error,
+           removeOrder,
+           updateOrder
+        } = useOnlineOrder();
+        console.log(" Online payments",orders)
+
+     const payments = orders || [];
 
 
    const calculateTotal = (items = []) => {
@@ -18,24 +28,24 @@ function OnlinePayment() {
 
 
 
-  const handleDelete = async (id) => {
-  try {
-    const res = await fetch(`http://localhost:7000/delete/order/${id}`, {
-      method: "DELETE",
-    });
+//   const handleDelete = async (id) => {
+//   try {
+//     const res = await fetch(`http://localhost:7000/delete/order/${id}`, {
+//       method: "DELETE",
+//     });
 
-    if (!res.ok) {
-      throw new Error("Failed to delete order");
-    }
+//     if (!res.ok) {
+//       throw new Error("Failed to delete order");
+//     }
 
-    // UI update (remove deleted item locally)
-    const updated = payments.filter((p) => p._id !== id);
+//     // UI update (remove deleted item locally)
+//     const updated = payments.filter((p) => p._id !== id);
    
-    window.location.reload(); // simple solution
-  } catch (error) {
-    console.log("Delete error:", error.message);
-  }
-};
+//     window.location.reload(); // simple solution
+//   } catch (error) {
+//     console.log("Delete error:", error.message);
+//   }
+// };
 
     return (
     <div className="payment-page">
@@ -127,11 +137,11 @@ function OnlinePayment() {
 
             {/* Actions */}
             <div className="actions">
-              <button className="btn update">
+              <button className="btn update" onClick={() => updateOrder(payment._id)}>
                 Update
               </button>
 
-              <button className="btn delete" onClick={() => handleDelete(payment._id)}>
+              <button className="btn delete" onClick={() => removeOrder(payment._id)}>
                 Delete
               </button>
             </div>

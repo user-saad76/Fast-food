@@ -17,6 +17,8 @@ import Dashboard from './pages/Dashboard';
 import Protected from './pages/Protected';
 import OnlinePayment from './pages/OnlinePayments';
 import CashOnDeliveries from './pages/CashOnDeliveries';
+import OrderProvider from './contexts/OrderProvider';
+import OnlineOrderProvider from './contexts/OnlineOrderProvider';
 
 function App() {
 //  const {data,error,loading}  = useFetch("http://localhost:7000/admin/me")
@@ -26,6 +28,7 @@ function App() {
   return (
     <>
     <AuthProvider>
+      <OrderProvider>
     <BrowserRouter>
        <Navbar />
      <Routes>
@@ -39,10 +42,11 @@ function App() {
            <Route path='/sign-up' element = {<SignUp/>} />  
             <Route path='/sign-in' element = {<SignIn/>} /> 
              <Route path='/dashboard' element = {<Protected><Dashboard/></Protected>} />  
-              <Route path='/online-payments' element = {<Protected><OnlinePayment/></Protected>} /> 
+              <Route path='/online-payments' element = {<Protected><OnlineOrderProvider><OnlinePayment/></OnlineOrderProvider></Protected>} /> 
               <Route path='/cash-on-deliveries' element = {<Protected><CashOnDeliveries/></Protected>} /> 
     </Routes>
     </BrowserRouter>
+    </OrderProvider>
      </AuthProvider>
     </>
   )
