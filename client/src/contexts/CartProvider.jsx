@@ -102,7 +102,14 @@ function CartProvider({children}) {
       console.log("Delete responsive",res)
 
     } 
-     const ClearCart = () => dispatch({type:'CLEAR_CART'})
+     const ClearCart = async() => {
+        const res = await fetch(`http://localhost:7000/cart/clear/${user?._id}`, {
+            method: "DELETE",
+            credentials: "include"
+        });
+        const result = await res.json();
+        dispatch({type:'CLEAR_CART'});
+    }
       const IncrementCart = (id) => {
 
          dispatch({type:'INCREMENT_CART',payload:id})

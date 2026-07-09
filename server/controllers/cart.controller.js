@@ -43,8 +43,20 @@ export const removeFromCart = async(req,res) =>{
       })
     }
 }
-export const ClearCart = (req,res) =>{
- 
+export const ClearCart = async(req,res) =>{
+    try {
+        const {userId} = req.params;
+        const cart = await getUserCart(userId);
+        cart.items = [];
+        await cart.save();
+        res.json(cart);
+    } catch (error) {
+        console.log(error)
+        res.json({
+            success:false,
+            message: error?.message || " Could not clear the cart"
+        })
+    }
 }
 export const updateCart = async(req,res) =>{
    try {

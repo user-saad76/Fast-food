@@ -3,32 +3,32 @@ import React from "react";
 import "./MenuFood.css";
 
 function MenuFood() {
-  const foods = [
-    {
-      name: "Zinger Burger",
-      desc: "Juicy grilled chicken burger with cheese and lettuce 🍔",
-      price: "Rs. 450",
-      img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-    },
-    {
-      name: "Cheese Pizza",
-      desc: "Delicious cheese pizza with tomato sauce and toppings 🍕",
-      price: "Rs. 1200",
-      img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
-    },
-    {
-      name: "French Fries",
-      desc: "Crispy golden fries with ketchup 🍟",
-      price: "Rs. 300",
-      img: "https://images.unsplash.com/photo-1550547660-d9450f859349",
-    },
-    {
-      name: "Fried Chicken",
-      desc: "Crispy fried chicken with special spices 🍗",
-      price: "Rs. 900",
-      img: "https://images.unsplash.com/photo-1544025162-d76694265947",
-    },
-  ];
+  // const foods = [
+  //   {
+  //     name: "Zinger Burger",
+  //     desc: "Juicy grilled chicken burger with cheese and lettuce 🍔",
+  //     price: "Rs. 450",
+  //     img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+  //   },
+  //   {
+  //     name: "Cheese Pizza",
+  //     desc: "Delicious cheese pizza with tomato sauce and toppings 🍕",
+  //     price: "Rs. 1200",
+  //     img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
+  //   },
+  //   {
+  //     name: "French Fries",
+  //     desc: "Crispy golden fries with ketchup 🍟",
+  //     price: "Rs. 300",
+  //     img: "https://images.unsplash.com/photo-1550547660-d9450f859349",
+  //   },
+  //   {
+  //     name: "Fried Chicken",
+  //     desc: "Crispy fried chicken with special spices 🍗",
+  //     price: "Rs. 900",
+  //     img: "https://images.unsplash.com/photo-1544025162-d76694265947",
+  //   },
+  // ];
 
   return (
     <section className="quantity-food">

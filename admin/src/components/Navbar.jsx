@@ -96,6 +96,12 @@ function Navbar() {
                 <Link to="/service-page">
                   <li>Create Service</li>
                 </Link>
+                 <Link to="/create-pizza">
+                  <li>Create Pizza</li>
+                </Link>
+                 <Link to="/create-burger">
+                  <li>Create Burger</li>
+                </Link>
               </ul>
             )}
           </li>

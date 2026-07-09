@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import CreateFirstBanner from './pages/CreateFirstBanner';
 import CreateOffers from './pages/CreateOffers';
 import CreateService from './pages/CreateService';
+import CreatePizza from './pages/CreatePizza';
+import CreateBurger from './pages/CreateBurger';
 import DeleteOffers from './pages/DeleteOffers';
 import Home from './pages/Home'
 import { BrowserRouter, Routes, Route } from "react-router";
@@ -44,6 +46,8 @@ function App() {
              <Route path='/dashboard' element = {<Protected><Dashboard/></Protected>} />  
               <Route path='/online-payments' element = {<Protected><OnlineOrderProvider><OnlinePayment/></OnlineOrderProvider></Protected>} /> 
               <Route path='/cash-on-deliveries' element = {<Protected><CashOnDeliveries/></Protected>} /> 
+                <Route path='/create-pizza' element = {<Protected><CreatePizza/></Protected>} /> 
+                <Route path='/create-burger' element = {<Protected><CreateBurger/></Protected>} /> 
     </Routes>
     </BrowserRouter>
     </OrderProvider>

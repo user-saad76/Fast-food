@@ -14,6 +14,8 @@ import paymentRoutes from './routes/payment.routes.js'
 import OrderRoutes from './routes/order.routes.js'
 import CashOrderRoutes from './routes/CashOrder.routes.js'
 import CartRoutes from './routes/cart.routes.js'
+import PizzaRoutes from './routes/pizzaItems.routes.js'
+import BurgerRoutes from './routes/burgerItems.routes.js'
 
 
 
@@ -40,6 +42,8 @@ server.use(paymentRoutes)
 server.use(OrderRoutes)
 server.use(CashOrderRoutes)
 server.use(CartRoutes)
+server.use(PizzaRoutes)
+server.use(BurgerRoutes)
 
 
 server.listen(port, ()=>{

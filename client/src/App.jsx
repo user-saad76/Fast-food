@@ -22,6 +22,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OrderSuccess from './pages/OrderSuccess';
 import OrderCancel from './pages/OrderCancel';
+import PizzaMenu from './pages/PizzaMenu';
+import PizzaInfo from './pages/PizzaInfo';
+import BurgerInfo from './pages/BurgerInfo';
 
 function App() {
   
@@ -41,6 +44,8 @@ function App() {
             <Route path='/sign-up' element = {<SignUp/>} />
             {/* //<Route path='/food/:slug' element = {<DetailPage/>} /> */}
              <Route path='/offers/:slug' element = {<InfoPage/>} />
+              <Route path='/pizzas/:slug' element = {<PizzaInfo/>} />
+               <Route path='/burgers/:slug' element = {<BurgerInfo/>} />
               <Route path='/sign-in' element = {<SignIn/>} />
                <Route path='/profile' element = {<Protected><Profile/></Protected>} />
                 <Route path='/cart-page' element = {<Protected><CartPage/></Protected>} />
@@ -48,6 +53,8 @@ function App() {
                   <Route path='/success' element = {<OrderSuccess/>} />
                    <Route path='/cancel' element = {<OrderCancel/>} />
                    <Route path='/cancel' element = {<Protected><OrderCancel/></Protected>} />
+                   <Route path='/pizza' element = {<PizzaMenu/>} />
+
             
     </Routes>
     <Footer/>

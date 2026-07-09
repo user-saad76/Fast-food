@@ -34,7 +34,7 @@ export const UpdateOrderById =  async(req,res,next)=>{
     try {
        const {id} = req.params;
       const {updatedData} = req.body;
-       const order = await Order.findByIdAndUpdate(id,req.body,{new:true})
+       const order = await Order.findByIdAndUpdate(id,req.body,{ returnDocument: "after" })
        res.status(200).json({
         order
        })

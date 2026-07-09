@@ -1,0 +1,62 @@
+import mongoose from "mongoose";
+
+const PizzaItemSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+
+    img: {
+      type: {
+        public_id: String,
+        secure_url: String,
+      },
+      required: true,
+    },
+
+    desc: {
+      type: String,
+      required: true,
+    },
+
+    price: {
+      type: String,
+      required: true,
+    },
+
+    oldPrice: {
+      type: String,
+      required: true,
+    },
+
+    discount: {
+      type: String,
+      required: true,
+    },
+
+    ingredients: {
+      type: [String],
+      required: true,
+    },
+
+    rating: {
+      type: Number,
+      min: 0,
+      max: 5,
+      default: 0,
+    },
+  },
+  { timestamps: true }
+);
+
+export const PizzaItem = mongoose.model("PizzaItem", PizzaItemSchema);
